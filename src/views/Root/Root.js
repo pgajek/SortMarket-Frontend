@@ -1,9 +1,10 @@
 import "./Root.scss";
+import Nav from "../../components/organisms/Nav/Nav";
 
 function Root() {
   return (
     <div className="root">
-      <button className="btn">177 PLN</button>
+      <Nav />
     </div>
   );
 }
