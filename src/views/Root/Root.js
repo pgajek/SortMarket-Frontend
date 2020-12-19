@@ -1,5 +1,5 @@
 import "./Root.scss";
-import Nav from "../../components/organisms/Nav/Nav";
+import Nav from "components/organisms/Nav/Nav";
 
 function Root() {
   return (

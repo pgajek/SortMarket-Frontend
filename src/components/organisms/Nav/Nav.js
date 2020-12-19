@@ -1,14 +1,18 @@
 import React from "react";
 import "./nav.scss";
-import { ReactComponent as Logo } from "../../../assets/icons/sort2.svg";
-import { ReactComponent as DropArrow } from "../../../assets/icons/dropDownArrow.svg";
-import Categories from "../../../assets/data/nav-data";
+import { ReactComponent as Logo } from "assets/icons/sort2.svg";
+import { ReactComponent as DropArrow } from "assets/icons/dropDownArrow.svg";
+import { ReactComponent as User } from "assets/icons/user.svg";
+import Categories from "assets/data/nav-data";
+
 const Nav = () => {
   return (
     <nav className="navigation">
       <div className="navigation__mainBar">
         <div className="navigation__logo">
-          <Logo className="logo_image" />
+          <a href="" className="navigation__logoLink">
+            <Logo className="logo_image" />
+          </a>
         </div>
         <ul className="navigation__innerNav">
           <li className="navigation__innerNavItem">
@@ -44,7 +48,9 @@ const Nav = () => {
           <button className="navigation__panelButton btn">Zaloguj</button>
         </form>
         <div className="navigation__buttons">
-          <button className="navigation__usrProfile">0</button>
+          <button className="navigation__userProfile">
+            <User />
+          </button>
           <button className="btn navigation__basketButton">111PLN</button>
         </div>
       </div>
