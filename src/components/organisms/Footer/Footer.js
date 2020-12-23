@@ -78,7 +78,17 @@ const Footer = () => {
       <div className="footer__mapContainer">
         <h3 className="footer__header">Nie możesz do nas trafić?</h3>
         <p className="footer__text">Spróbuj z Google</p>
-        <div className="footer__googleMap">Mapa</div>
+        <div className="footer__googleMap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2565.8726279814573!2d20.419560216140518!3d49.976247179412745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47163b3a50ef4a7b%3A0x5cfcdf05f09c8390!2sKarosek%2027E%2C%2032-700%20Bochnia!5e0!3m2!1spl!2spl!4v1608731326648!5m2!1spl!2spl"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allowfullscreen=""
+            aria-hidden="false"
+            tabindex="0"
+          ></iframe>
+        </div>
       </div>
       <div className="footer__copyright">Copyright © 2020 Patryk Gajek</div>
     </footer>
