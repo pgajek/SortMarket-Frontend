@@ -1,4 +1,4 @@
-@import "_variables.scss";
+@import '_variables.scss';
 
 .footer {
   position: relative;
@@ -13,13 +13,17 @@
   left: 50%;
   transform: translateX(-50%);
   height: 35px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
   path,
   polygon {
     fill: #231f20;
   }
 }
 .footer__header {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   color: $mainOrange;
   font-size: 2rem;
@@ -42,7 +46,7 @@
 .footer__listLink,
 .footer__text,
 .footer__copyright {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   text-decoration: none;
   font-size: 1.2rem;
   line-height: 2.5rem;
@@ -103,7 +107,29 @@
     }
   }
 }
-
+@media (orientation: portrait) and(min-width:768px) {
+  .footer {
+    margin-top: 100px;
+  }
+  .footer__img {
+    top: -59px;
+    height: 60px;
+  }
+  .footer__header {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+  }
+  .footer__categoryLink,
+  .footer__contactSpan,
+  .footer__listLink,
+  .footer__text,
+  .footer__copyright {
+    font-size: 1.8rem;
+    line-height: 3.5rem;
+  }
+}
+@media (orientation: portrait) and(min-width:1024px) {
+}
 @media (orientation: landscape) {
   .footer__lists {
     grid-template-columns: 1fr 1fr 1fr;
@@ -111,7 +137,7 @@
   .footer__categoriesList {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  .footer__googleMap {
+  .footer__mapContainer {
     height: 30vw;
   }
   .footer {
@@ -120,5 +146,38 @@
   .footer__img {
     top: -44px;
     height: 45px;
+  }
+}
+@media (orientation: landscape) and(min-width:1024px) {
+  .footer {
+    display: grid;
+    grid-template-areas:
+      'categories map'
+      'lists map'
+      'copy copy';
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 1fr 1fr 20px;
+    padding: 3vh 2.5vw 0 2.5vw;
+  }
+  .footer__img {
+    height: 60px;
+    top: -59px;
+  }
+  .footer__mapContainer {
+    width: 100%;
+    height: 100%;
+    grid-area: map;
+  }
+  .footer__categories {
+    padding-top: 0;
+    width: 65vw;
+    grid-area: categories;
+  }
+  .footer__lists {
+    width: 65vw;
+    grid-area: lists;
+  }
+  .footer__copyright {
+    grid-area: copy;
   }
 }

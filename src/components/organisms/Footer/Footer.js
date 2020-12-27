@@ -1,10 +1,10 @@
-import React from "react";
-import "./Footer.scss";
-import { ReactComponent as FooterImg } from "assets/icons/footer_img.svg";
-import { ReactComponent as Letter } from "assets/icons/letter.svg";
-import { ReactComponent as Pin } from "assets/icons/pin.svg";
-import { ReactComponent as Phone } from "assets/icons/phone.svg";
-import Categories from "assets/data/categories-data";
+import React from 'react';
+import './Footer.scss';
+import { ReactComponent as FooterImg } from 'assets/icons/footer_img.svg';
+import { ReactComponent as Letter } from 'assets/icons/letter.svg';
+import { ReactComponent as Pin } from 'assets/icons/pin.svg';
+import { ReactComponent as Phone } from 'assets/icons/phone.svg';
+import Categories from 'assets/data/categories-data';
 const Footer = () => {
   return (
     <footer className="footer">
@@ -13,7 +13,7 @@ const Footer = () => {
         <h3 className="footer__header">Kategorie</h3>
         <ul className="footer__categoriesList">
           {Categories.map((cat) => (
-            <li className="footer__category">
+            <li key={cat.name} className="footer__category">
               <a href="#" className="footer__categoryLink">
                 {cat.name}
               </a>
@@ -83,11 +83,10 @@ const Footer = () => {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2565.8726279814573!2d20.419560216140518!3d49.976247179412745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47163b3a50ef4a7b%3A0x5cfcdf05f09c8390!2sKarosek%2027E%2C%2032-700%20Bochnia!5e0!3m2!1spl!2spl!4v1608731326648!5m2!1spl!2spl"
             width="100%"
             height="100%"
-            frameborder="0"
-            allowfullscreen=""
+            frameBorder="0"
+            allowFullScreen=""
             aria-hidden="false"
-            tabindex="0"
-          ></iframe>
+            tabIndex="0"></iframe>
         </div>
       </div>
       <div className="footer__copyright">Copyright © 2020 Patryk Gajek</div>
