@@ -1,0 +1,89 @@
+.card {
+  width: 350px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
+  margin: 5px auto;
+  padding: 5px;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 100px 45px 25px 25px;
+  grid-template-areas:
+    "img price"
+    "name ."
+    "reviews form"
+    "rating form";
+  & > * {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+.card__img {
+  grid-area: img;
+  width: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.card__productName {
+  font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  color: #402e32;
+  grid-area: name;
+}
+.card__productPrice {
+  color: #f4b536;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 3.8rem;
+  grid-area: price;
+  justify-content: center;
+}
+.card__rating {
+  grid-area: rating;
+}
+.card__reviews {
+  color: #dfe0df;
+  font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  grid-area: reviews;
+}
+.card__form {
+  display: flex;
+  grid-area: form;
+  justify-content: center;
+}
+.card__quantity {
+  appearance: none;
+  border: 1px solid #cccccc;
+  color: #dfe0df;
+  font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  margin-right: 2px;
+}
+.card__star {
+  &--active {
+    path {
+      fill: #fba422;
+    }
+  }
+}
+@media (orientation: portrait) and(max-width: 374px) {
+  .card {
+    width: 315px;
+    grid-template-columns: 140px 1fr;
+  }
+  .card__btn {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+}
