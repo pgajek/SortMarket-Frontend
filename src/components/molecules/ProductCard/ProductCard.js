@@ -3,6 +3,7 @@ import "./ProductCard.scss";
 import { ReactComponent as Star } from "assets/icons/star.svg";
 
 const ProductCard = ({ rating, quantity, unit, name, price, currency }) => {
+  const stars = [1, 2, 3, 4, 5];
   const createSelectItems = () => {
     let items = [];
     for (let i = 1; i <= quantity; i++) {
@@ -11,7 +12,6 @@ const ProductCard = ({ rating, quantity, unit, name, price, currency }) => {
     return items;
   };
 
-  const stars = [1, 2, 3, 4, 5];
   return (
     <div className="card">
       <div className="card__img">
