@@ -1,13 +1,16 @@
 .card {
   width: 350px;
+  height: 245px;
   border: 1px solid #cccccc;
   box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
   margin: 5px auto;
   padding: 5px;
   border-radius: 2px;
   display: grid;
+  justify-content: center;
+  align-content: center;
   grid-template-columns: 150px 1fr;
-  grid-template-rows: 100px 45px 25px 25px;
+  grid-template-rows: 110px 45px 25px 25px;
   grid-template-areas:
     "img price"
     "name ."
@@ -85,5 +88,74 @@
   .card__btn {
     font-size: 1.2rem;
     line-height: 1.8rem;
+  }
+}
+@media (orientation: landscape) {
+  .card {
+    width: 555px;
+    height: 200px;
+    grid-template-columns: 180px 1fr 85px;
+    grid-template-rows: 25px 25px 25px 50px;
+    grid-row-gap: 13px;
+    grid-template-areas:
+      "img name ."
+      "img price ."
+      "img rating reviews"
+      "img form form";
+    & > * {
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+  }
+  .card__reviews {
+    padding-left: 0;
+  }
+  .card__form {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    .btn {
+      width: 220px;
+      margin-right: 10px;
+    }
+    select {
+      flex-grow: 1;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .card {
+    width: 270px;
+    height: 365px;
+    grid-template-columns: 1fr 85px;
+    grid-template-rows: 160px 25px 25px 50px;
+    grid-row-gap: 10px;
+    grid-template-areas:
+      "img img"
+      "name ."
+      "price ."
+      "rating reviews"
+      "form form";
+    & > * {
+      justify-content: flex-start;
+    }
+    padding: 10px;
+  }
+  .card__form {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 0;
+    .btn {
+      width: 135px;
+    }
+    select {
+      flex-grow: 1;
+    }
+  }
+  .card__reviews {
+    padding-left: 0;
+  }
+  .card__productPrice {
+    font-size: 1.4rem;
+    line-height: 2.1rem;
   }
 }

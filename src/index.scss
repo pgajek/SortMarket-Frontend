@@ -1,5 +1,5 @@
-@import '_variables';
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,300;0,600;0,800;1,500;1,600&family=Poppins:wght@500;600;700&display=swap');
+@import "_variables";
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,300;0,600;0,800;1,500;1,600&family=Poppins:wght@500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 #root {
   width: 100%;
@@ -30,7 +31,7 @@ body {
   height: 40px;
   line-height: 2.5rem;
   font-size: 1.6rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: #fff;
   background-color: $mainOrange;
