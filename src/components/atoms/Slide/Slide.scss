@@ -1,0 +1,12 @@
+.slide {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform ease-out 1s;
+  transform: translateX(0);
+}
