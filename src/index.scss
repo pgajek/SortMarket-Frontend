@@ -8,7 +8,6 @@
 html {
   font-size: 62.5%;
 }
-
 body {
   width: 100vw;
   max-width: 1920px;
@@ -17,6 +16,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
+  padding-top: 10vh;
 }
 #root {
   width: 100%;
@@ -39,9 +39,14 @@ body {
   border-radius: 2px;
   padding: 5px 10px;
   box-shadow: 0 1px 3px rgba(17, 17, 17, 0.11);
-
+  cursor: pointer;
   &:hover {
     filter: brightness(1.2);
     cursor: pointer;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    padding: 0;
   }
 }
