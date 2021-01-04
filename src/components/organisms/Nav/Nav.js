@@ -12,6 +12,7 @@ const Nav = () => {
   const [isLoginOpen, handleLoginOpen] = useState(false);
   return (
     <>
+      <Logo className="navigation__mobileLogo" />
       <button
         className={
           isOpen
