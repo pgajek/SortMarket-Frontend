@@ -343,7 +343,7 @@ ul {
   .navigation__pointer {
     display: none;
   }
-  ///////////////////////////////////////////////////////////
+
   .navigation__categoriesLink {
     display: none;
   }
@@ -406,10 +406,18 @@ ul {
     font-size: 1.2rem;
   }
 }
-@media (max-width: 1150px) {
-  .navigation__category {
-  }
+@media (min-width: 1145px) {
   .navigation__link {
     font-size: 1.4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .navigation__link {
+    font-size: 1.6rem;
+  }
+}
+@media (min-width: 1626px) {
+  .navigation__category {
+    min-width: 16%;
   }
 }
