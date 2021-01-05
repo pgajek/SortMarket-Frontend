@@ -3,6 +3,7 @@ import "./Slider.scss";
 import Slide from "components/atoms/Slide/Slide";
 import Dot from "components/atoms/Dot/Dot";
 import { ReactComponent as Worker } from "assets/icons/Worker1.svg";
+import { Link } from "react-router-dom";
 
 const Slider = () => {
   const slides = [
@@ -44,8 +45,12 @@ const Slider = () => {
                     czy też wybudować wymarzony dom.
                   </p>
                   <div className="slide__buttons">
-                    <a className="btn">Produkty</a>
-                    <a className="btn slide__btn">Wiecej...</a>
+                    <Link className="btn" to="/products">
+                      Produkty
+                    </Link>
+                    <Link className="btn slide__btn" to="/about">
+                      Wiecej...
+                    </Link>
                   </div>
                 </div>
                 <Worker className="slide__worker" />

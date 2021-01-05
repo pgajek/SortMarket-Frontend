@@ -1,25 +1,23 @@
 import "./Root.scss";
-import Nav from "components/organisms/Nav/Nav";
-import Footer from "components/organisms/Footer/Footer";
-import ProductCard from "components/molecules/ProductCard/ProductCard";
-import Slider from "components/organisms/Slider/Slider";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+
+import HomeScreen from "views/Home/HomeScreen";
+import AboutScreen from "views/About/AboutScreen";
+
 function Root() {
   return (
-    <div className="root">
-      {/* <Nav />
-
-      <Footer /> */}
-
-      {/* <ProductCard
-        rating={4}
-        quantity={7}
-        unit="szt"
-        name="Fajna cegła"
-        price={36.66}
-        currency="PLN"
-      /> */}
-      <Slider />
-    </div>
+    <BrowserRouter>
+      <div className="root">
+        <Route path="/" exact component={HomeScreen} />
+        <Route path="/about" component={AboutScreen} />
+        {/* <Route path="/register" component={RegisterScreen} />
+        <Route path="/cart/:id?" exact component={CartScreen} />
+        <Route path="/products" exact component={ProductsScreen} />
+        <Route path="/product/:id" exact component={ProductDetailsScreen} />
+        <Route path="/order" exact component={OrderScreen} />
+        <Route path="/payment" exact component={PaymentScreen} /> */}
+      </div>
+    </BrowserRouter>
   );
 }
 

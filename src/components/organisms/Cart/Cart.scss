@@ -1,0 +1,110 @@
+@import "_variables.scss";
+.cart {
+  position: fixed;
+  height: 100vh;
+  max-height: 640px;
+  width: 100vw;
+  max-width: 450px;
+  border: 1px solid $mainOrange;
+  border-radius: 2px;
+  padding: 5px 10px 60px 10px;
+  z-index: 90;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  left: 100vw;
+  top: 55%;
+}
+.cart__show {
+  background-image: url("/assets/icons/cartBg.svg");
+  background-size: contain;
+  position: absolute;
+  left: -45px;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.cart__icon {
+  height: 50%;
+  width: 50%;
+  path,
+  rect {
+    stroke: #fff;
+  }
+}
+.cart__header {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.7rem;
+  color: #402e32;
+}
+.cart__products {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  padding: 5px 0;
+  justify-self: stretch;
+  align-self: stretch;
+  flex-grow: 1;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.cart__products::-webkit-scrollbar,
+.cart__products::-webkit-scrollbar-track,
+.cart__products::-webkit-scrollbar-thumb {
+  display: none;
+}
+.cart__field {
+  font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  padding: 10px 0;
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  * {
+    width: 100%;
+  }
+}
+.cart__tableNames {
+  color: #dfe0df;
+}
+.cart__productPrice {
+  display: flex;
+  justify-content: flex-end;
+}
+.cart__quantity {
+  display: flex;
+  justify-content: center;
+}
+.cart__summary {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.cart__sumName {
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  font-family: "Inter", sans-serif;
+  color: #402e32;
+}
+.cart__sum {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: $mainOrange;
+  line-height: 3.5rem;
+}
+.cart__btn {
+  width: 90%;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  text-align: center;
+}
