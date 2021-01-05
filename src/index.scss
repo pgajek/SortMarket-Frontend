@@ -7,6 +7,12 @@
 }
 html {
   font-size: 62.5%;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+html::-webkit-scrollbar-track,
+html::-webkit-scrollbar-thumb {
+  display: none;
 }
 body {
   width: 100vw;
@@ -17,7 +23,9 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   padding-top: 10vh;
+  scrollbar-width: none;
 }
+
 #root {
   width: 100%;
   height: 100%;
