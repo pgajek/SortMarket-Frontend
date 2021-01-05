@@ -5,11 +5,11 @@ import { ReactComponent as User } from "assets/icons/user.svg";
 import { ReactComponent as Pointer } from "assets/icons/pointer_arrow.svg";
 import { ReactComponent as Cart } from "assets/icons/cart.svg";
 import Categories from "assets/data/categories-data";
+import LoginPanel from "components/molecules/LoginPanel/LoginPanel";
 
 const Nav = () => {
   const [isOpen, handleBurgerClick] = useState(false);
   const [user, handleCheckUser] = useState(false);
-  const [isLoginOpen, handleLoginOpen] = useState(false);
   return (
     <>
       <Logo className="navigation__mobileLogo" />
@@ -56,43 +56,7 @@ const Nav = () => {
             </li>
           </ul>
           {!user ? (
-            <form
-              className={
-                isLoginOpen
-                  ? "navigation__loginPanel navigation__loginPanel--active"
-                  : "navigation__loginPanel"
-              }
-            >
-              {isLoginOpen ? (
-                <>
-                  <div className="navigation__panelField">
-                    <label htmlFor="login"></label>
-                    <input
-                      type="text"
-                      name="login"
-                      id="login"
-                      placeholder="Login"
-                    />
-                  </div>
-                  <div className="navigation__panelField">
-                    <label htmlFor="password"></label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="Hasło"
-                    />
-                  </div>
-                  <button className="navigation__panelButton btn">
-                    Zaloguj
-                  </button>
-                </>
-              ) : (
-                <button className="btn" onClick={() => handleLoginOpen(true)}>
-                  Zaloguj
-                </button>
-              )}
-            </form>
+            <LoginPanel />
           ) : (
             <div className="navigation__buttons">
               <button className="navigation__userProfile">

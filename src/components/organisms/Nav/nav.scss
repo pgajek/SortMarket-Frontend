@@ -167,28 +167,7 @@ ul {
   text-transform: uppercase;
   background-color: #fff;
 }
-.navigation__loginPanel {
-  display: flex;
-  flex-direction: column;
-  width: 85%;
-  height: 50px;
-  max-width: 300px;
-  transition: 0.2s;
-  &--active {
-    height: 150px;
-  }
-}
-.navigation__panelField {
-  height: 100%;
-  input {
-    border: 1px solid #f6eddb;
-    border-radius: 2px;
-    height: 40px;
-    color: #aaa;
-    padding: 5px 10px;
-    width: 100%;
-  }
-}
+
 .navigation__buttons {
   display: flex;
   flex-direction: column;
@@ -317,17 +296,6 @@ ul {
   .navigation__innerNavLink {
     text-transform: unset;
     font-size: 1.4rem;
-  }
-  .navigation__loginPanel {
-    flex-direction: row;
-    height: 50%;
-    margin-right: 3%;
-    width: auto;
-  }
-  .navigation__panelField {
-    input {
-      max-width: 120px;
-    }
   }
   .navigation__buttons {
     flex-direction: row;
