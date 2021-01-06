@@ -6,10 +6,13 @@ import { ReactComponent as Pointer } from "assets/icons/pointer_arrow.svg";
 import { ReactComponent as Cart } from "assets/icons/cart.svg";
 import Categories from "assets/data/categories-data";
 import LoginPanel from "components/molecules/LoginPanel/LoginPanel";
+import { useDispatch, useSelector } from "react-redux";
 
 const Nav = () => {
   const [isOpen, handleBurgerClick] = useState(false);
   const [user, handleCheckUser] = useState(false);
+  const userSignin = useSelector((state) => state.user);
+  const { token } = userSignin;
   return (
     <>
       <Logo className="navigation__mobileLogo" />
@@ -55,7 +58,7 @@ const Nav = () => {
               </a>
             </li>
           </ul>
-          {!user ? (
+          {!token ? (
             <LoginPanel />
           ) : (
             <div className="navigation__buttons">

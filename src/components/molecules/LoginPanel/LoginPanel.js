@@ -12,7 +12,7 @@ const LoginPanel = () => {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(userSignin);
+
     dispatch(signin(email, password));
   };
   return (
