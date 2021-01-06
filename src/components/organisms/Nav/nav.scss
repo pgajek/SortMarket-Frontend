@@ -282,9 +282,7 @@ ul {
   .logo_image {
     height: 40px;
   }
-  ul {
-    list-style-type: none;
-  }
+
   .navigation__innerNav {
     flex-direction: row;
     width: 30%;
@@ -322,6 +320,7 @@ ul {
     border-radius: 2px;
     box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
     min-height: 30px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -339,7 +338,7 @@ ul {
     justify-content: center;
     cursor: pointer;
     padding: 10px;
-    min-width: 10%;
+    width: 16%;
     &:hover {
       background-color: $secondOrange;
     }

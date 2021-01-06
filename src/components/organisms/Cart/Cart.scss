@@ -8,25 +8,37 @@
   border: 1px solid $mainOrange;
   border-radius: 2px;
   padding: 5px 10px 60px 10px;
-  z-index: 90;
+  z-index: 50;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   left: 100vw;
-  top: 55%;
+  top: 50vh;
+  transform: translateY(-50%);
+  transition: 0.3s ease;
+  box-shadow: 1px 1px 6px rgba($color: #000000, $alpha: 0.3);
 }
 .cart__show {
   background-image: url("/assets/icons/cartBg.svg");
   background-size: contain;
   position: absolute;
   left: -45px;
+  top: 55%;
   height: 45px;
   width: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  &--active {
+    transform: scaleX(-1);
+    left: 0;
+  }
 }
+
 .cart__icon {
   height: 50%;
   width: 50%;
@@ -107,4 +119,9 @@
   transform: translateX(-50%);
   text-decoration: none;
   text-align: center;
+}
+@media (min-width: 1024px) {
+  .cart {
+    z-index: 99;
+  }
 }

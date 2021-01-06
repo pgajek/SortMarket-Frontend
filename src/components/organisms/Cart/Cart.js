@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Cart.scss";
 import { Link } from "react-router-dom";
 import { ReactComponent as CartIcon } from "assets/icons/cart.svg";
+import { useRef } from "react";
+import useComponentSize from "@rehooks/component-size";
 
 const Cart = () => {
+  const [hide, handleHide] = useState(false);
+  let ref = useRef(null);
+  let size = useComponentSize(ref);
   return (
-    <div className="cart">
-      <div className="cart__show">
+    <div
+      ref={ref}
+      className="cart"
+      style={
+        hide
+          ? {
+              transform: `translate(-${size.width}px,-50%)`,
+            }
+          : { transform: `translate(0, -50%)` }
+      }
+    >
+      <button
+        className={!hide ? "cart__show" : "cart__show cart__show--active"}
+        onClick={() => handleHide(!hide)}
+      >
         <CartIcon className="cart__icon" />
-      </div>
+      </button>
       <h3 className="cart__header">Koszyk</h3>
       <div className="cart__field cart__tableNames">
         <span className="cart__name">Nazwa</span>
