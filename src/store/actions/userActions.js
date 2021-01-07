@@ -3,6 +3,9 @@ import {
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
   USER_SIGNIN_FAIL,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
 } from "constants/userConstants";
 
 export const signin = (email, password) => async (dispatch) => {
@@ -21,11 +24,15 @@ export const signin = (email, password) => async (dispatch) => {
 export const register = (name, email, password) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });
   try {
-    const { data } = await Axios.post("/api/users/register", {
-      name,
-      email,
-      password,
-    });
+    const { data } = await Axios.post(
+      "http://localhost:9000/api/v1/user/register",
+      {
+        name,
+        email,
+        password,
+      }
+    );
+
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     Cookie.set("userInfo", JSON.stringify(data));
   } catch (error) {
