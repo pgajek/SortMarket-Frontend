@@ -1,11 +1,19 @@
 .register {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 90vw;
-  min-height: 50vh;
+  max-width: 380px;
+
+  height: 420px;
   margin: 40px auto 0 auto;
   padding: 2%;
   box-shadow: 0 1px 10px rgba($color: #000000, $alpha: 0.2);
+  & > * {
+    width: 100%;
+    max-width: 360px;
+  }
 }
 .register__panelField {
   display: flex;
@@ -38,4 +46,9 @@
   font-size: 2rem;
   line-height: 3rem;
   font-weight: 600;
+}
+@media (min-width: 1024px) {
+  .register {
+    margin: 100px auto;
+  }
 }
