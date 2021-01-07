@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ProductCard.scss";
 import { ReactComponent as Star } from "assets/icons/star.svg";
 
-const ProductCard = ({ rating, quantity, unit, name, price, currency }) => {
+const ProductCard = ({
+  rating,
+  quantity,
+  unit,
+  name,
+  price,
+  currency,
+  img,
+}) => {
   const stars = [1, 2, 3, 4, 5];
   const createSelectItems = () => {
     let items = [];
@@ -15,7 +23,7 @@ const ProductCard = ({ rating, quantity, unit, name, price, currency }) => {
   return (
     <div className="card">
       <div className="card__img">
-        <img src="assets/img/test.jpg" />
+        <img src={img} />
       </div>
       <h2 className="card__productName">{name}</h2>
       <span className="card__productPrice">{`${price} ${currency}`}</span>
