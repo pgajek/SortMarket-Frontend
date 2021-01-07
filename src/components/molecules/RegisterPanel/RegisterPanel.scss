@@ -1,0 +1,41 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  min-height: 50vh;
+  margin: 40px auto 0 auto;
+  padding: 2%;
+  box-shadow: 0 1px 10px rgba($color: #000000, $alpha: 0.2);
+}
+.register__panelField {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 5px 0;
+  input {
+    border: 1px solid #f6eddb;
+    border-radius: 2px;
+    height: 40px;
+    color: #aaa;
+    padding: 5px 10px;
+    width: 100%;
+    &[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  label {
+    color: #402e32;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: 500;
+  }
+}
+.register__header {
+  color: #402e32;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 600;
+}
