@@ -15,7 +15,7 @@ const ProductCard = ({
   const createSelectItems = () => {
     let items = [];
     for (let i = 1; i <= quantity; i++) {
-      items.push(<option value={`${i}`}>{`${i} ${unit}`}</option>);
+      items.push(<option key={i} value={`${i}`}>{`${i} ${unit}`}</option>);
     }
     return items;
   };
@@ -28,9 +28,9 @@ const ProductCard = ({
       <h2 className="card__productName">{name}</h2>
       <span className="card__productPrice">{`${price} ${currency}`}</span>
       <div className="card__rating">
-        {stars.map((star) => (
+        {stars.map((star, index) => (
           <Star
-            key={star}
+            key={index}
             className={`card__star ${
               rating >= star ? "card__star--active" : ""
             }`}
