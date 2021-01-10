@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import HomeScreen from "views/Home/HomeScreen";
 import RegisterScreen from "views/Register/RegisterScreen";
 import AboutScreen from "views/About/AboutScreen";
+import ProductScreen from "views/Product/ProductScreen";
 
 function Root() {
   return (
@@ -11,6 +12,7 @@ function Root() {
       <Route path="/" exact component={HomeScreen} />
       <Route path="/about" component={AboutScreen} />
       <Route path="/register" component={RegisterScreen} />
+      <Route path="/product/:id" component={ProductScreen} />
       {/* <Route path="/register" component={RegisterScreen} />
         <Route path="/cart/:id?" exact component={CartScreen} />
         <Route path="/products" exact component={ProductsScreen} />

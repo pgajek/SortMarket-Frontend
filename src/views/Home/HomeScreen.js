@@ -16,6 +16,7 @@ const HomeScreen = () => {
         name="Fajna cegła"
         price={36.66}
         currency="PLN"
+        img="assets/img/test.jpg"
       /> */}
       <Cart />
       <Footer />
