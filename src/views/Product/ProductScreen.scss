@@ -80,7 +80,7 @@
     "btn btn";
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 5px;
-  //   grid-template-rows: 1.5rem 4.5rem 4.5rem;
+  max-width: 305px;
 }
 .productScreen__selectLabel {
   font-family: "Poppins", sans-serif;
@@ -164,7 +164,7 @@
     margin: 10px auto;
     flex-direction: row;
 
-    height: 370px;
+    height: 400px;
     width: 80vw;
 
     overflow-x: scroll;
@@ -176,18 +176,27 @@
   .productScreen__relatedHeader {
     padding-left: 5vw;
   }
-  .productScreen__form {
-    select {
-      width: 60%;
-    }
-  }
+
   .productScreen__form,
   .productScreen__reviews,
   .productScreen__rating {
     align-self: flex-end;
   }
 }
+@media (min-width: 1024px) and(orientation:portrait) {
+  .productScreen__productContainer {
+    width: 80vw;
 
+    grid-template-columns: 30% 10% 10% 45%;
+    grid-gap: 0;
+    grid-template-areas:
+      "images images . price"
+      "images images . description"
+      "name . . form"
+      "rating reviews . form";
+    padding: 15px 40px 15px 15px;
+  }
+}
 @media (orientation: landscape) {
   .productScreen__productContainer {
     width: 550px;
@@ -228,7 +237,7 @@
 @media (min-width: 768px) and (orientation: landscape) {
   .productScreen__productContainer {
     width: 80vw;
-
+    padding: 15px 40px 15px 15px;
     grid-template-columns: 30% 10% 15% 45%;
     grid-gap: 0;
     grid-template-areas:
@@ -242,13 +251,48 @@
   .productScreen__rating {
     align-self: flex-end;
   }
+  .productScreen__relatedHeader {
+    padding-left: 10vw;
+  }
 }
-@media (min-width: 1280px) {
+@media (min-width: 1024px) and (orientation: landscape) {
   .productScreen__productContainer {
-    padding: 15px 30px;
+    width: 80vw;
+    padding: 15px 40px 15px 15px;
+    grid-template-columns: 35% 10% 5% 50%;
+    grid-gap: 0;
+    grid-template-areas:
+      "images images . price"
+      "images images . description"
+      "name . . form"
+      "rating reviews . form";
+  }
+  .productScreen__form,
+  .productScreen__reviews,
+  .productScreen__rating {
+    align-self: flex-end;
+  }
+}
+@media (orientation: landscape) and(min-width:1100px) {
+  .productScreen__productContainer {
+    padding: 40px;
+    grid-template-columns: 50% 20px 1fr 100px;
+    grid-template-rows: 3rem 3rem 8rem 1fr 1fr;
+
+    grid-template-areas:
+      "images . name name"
+      "images . rating reviews"
+      "images . price ."
+      "images . description description"
+      "images . form .";
+  }
+  .productScreen__productImages {
+    height: 80%;
+    margin-bottom: auto;
+  }
+  .productScreen__productPrice {
   }
   .productScreen__mainImage {
-    width: 80%;
-    margin: 0 auto;
+    max-width: 575px;
   }
 }
