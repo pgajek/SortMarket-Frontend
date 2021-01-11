@@ -14,7 +14,7 @@ const HomeScreen = () => {
       <Nav />
       <Slider />
       <SearchBar />
-      <section className="products">
+      <section className="home__products">
         <ProductCard
           rating={4}
           quantity={7}

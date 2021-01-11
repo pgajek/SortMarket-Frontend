@@ -1,4 +1,4 @@
-.products {
+.home__products {
   width: 80vw;
 
   padding: 5vh 0;
@@ -8,7 +8,7 @@
   margin: 0 auto;
 }
 @media (orientation: portrait) and(min-width: 768px) {
-  .products {
+  .home__products {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -16,14 +16,14 @@
     width: 90vw;
     max-width: 1200px;
   }
-  .products {
+  .home__products {
     .addBanner {
       margin: 20px auto;
     }
   }
 }
 @media (orientation: landscape) and(min-width:1024px) {
-  .products {
+  .home__products {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -31,7 +31,7 @@
     width: 90vw;
     max-width: 1200px;
   }
-  .products {
+  .home__products {
     .addBanner {
       margin: 20px auto;
     }
