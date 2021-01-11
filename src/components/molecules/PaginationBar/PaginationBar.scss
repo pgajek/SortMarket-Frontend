@@ -1,0 +1,87 @@
+@import "_variables.scss";
+.paginationBar {
+  width: 350px;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba($color: #111, $alpha: 0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  & > * {
+    margin: 10px 0;
+  }
+  margin: 5vmax auto;
+}
+.paginationBar__results {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: #707070;
+}
+.paginationBar__pages {
+  font-family: "Inter", sans-serif;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
+  color: #dfe0df;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+}
+.paginationBar__title {
+  margin: 0 5px;
+}
+.paginationBar__page {
+  display: block;
+  margin: 0 5px;
+  cursor: pointer;
+  text-decoration: underline;
+  &--active {
+    color: $mainOrange;
+    text-decoration: none;
+  }
+}
+.paginationBar__btn {
+}
+@media (orientation: portrait) and(max-width: 374px) {
+  .paginationBar {
+    width: 315px;
+  }
+}
+@media (orientation: landscape) {
+  .paginationBar {
+    width: 555px;
+  }
+}
+@media (min-width: 768px) {
+  .paginationBar {
+    width: 80vw;
+  }
+}
+@media (orientation: landscape) and (min-width: 1280px) {
+  .paginationBar {
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 5%;
+    & > * {
+      width: 33%;
+    }
+  }
+  .paginationBar__results {
+    order: 3;
+    text-align: right;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  .paginationBar__pages {
+    order: 1;
+    text-align: left;
+    flex-grow: 1;
+    padding: 0 10px;
+  }
+  .paginationBar__btn {
+    order: 2;
+    flex-shrink: 0;
+  }
+}
