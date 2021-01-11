@@ -5,7 +5,6 @@ const SearchBar = () => {
   const [search, setSearch] = useState("");
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(search);
   };
   return (
     <div className="searchBar">
