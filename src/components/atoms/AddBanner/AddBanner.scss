@@ -68,3 +68,8 @@
     width: 435px;
   }
 }
+@media (orientation: landscape) and(min-width:1024px) {
+  .addBanner {
+    width: 540px;
+  }
+}
