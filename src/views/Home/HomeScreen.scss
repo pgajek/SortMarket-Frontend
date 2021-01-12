@@ -9,16 +9,20 @@
 }
 @media (orientation: portrait) and(min-width: 768px) {
   .home__products {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: space-between;
-    width: 90vw;
-    max-width: 1200px;
-  }
-  .home__products {
+    padding: 0;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 270px);
+    grid-template-rows: repeat(autofill, 365px);
+    grid-column-gap: auto;
+    grid-row-gap: 10px;
     .addBanner {
-      margin: 20px auto;
+      grid-row: 2;
+      grid-column: 2 / 4;
+      width: 100%;
+    }
+    .card {
+      margin: 0;
     }
   }
 }
