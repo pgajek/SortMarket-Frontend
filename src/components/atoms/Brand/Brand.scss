@@ -1,0 +1,8 @@
+.brand {
+  &--active {
+    background-color: #fffaee;
+    .products__howMany {
+      background-color: #fff;
+    }
+  }
+}

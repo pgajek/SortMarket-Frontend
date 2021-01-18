@@ -9,6 +9,8 @@ import PaginationBar from "components/molecules/PaginationBar/PaginationBar";
 import { ReactComponent as Star } from "assets/icons/star.svg";
 import "./ProductsScreen.scss";
 import CatData from "assets/data/categories-data";
+import Brand from "components/atoms/Brand/Brand";
+import Category from "components/atoms/Category/Category";
 
 const ProductsScreen = () => {
   return (
@@ -20,49 +22,18 @@ const ProductsScreen = () => {
           <div className="products__brands products__filterBox">
             <h4 className="products__filterHeader">Marka</h4>
             <div className="products__items">
-              <div className="products__brand">
-                <input type="checkbox" className="products__checkbox" />
-                <label htmlFor="brandName" className="products__name">
-                  Brand
-                </label>
-                <span className="products__howMany">112</span>
-              </div>
-              <div className="products__brand">
-                <input type="checkbox" className="products__checkbox" />
-                <label htmlFor="brandName" className="products__name">
-                  Brand
-                </label>
-                <span className="products__howMany">112</span>
-              </div>
-              <div className="products__brand">
-                <input type="checkbox" className="products__checkbox" />
-                <label htmlFor="brandName" className="products__name">
-                  Brand
-                </label>
-                <span className="products__howMany">112</span>
-              </div>
-              <div className="products__brand">
-                <input type="checkbox" className="products__checkbox" />
-                <label htmlFor="brandName" className="products__name">
-                  Brand
-                </label>
-                <span className="products__howMany">112</span>
-              </div>
+              <Brand name="Brand" quantity="112" />
+              <Brand name="Brand" quantity="112" />
+              <Brand name="Brand" quantity="112" />
+              <Brand name="Brand" quantity="112" />
+              <Brand name="Brand" quantity="112" />
             </div>
           </div>
           <div className="products__categories products__filterBox">
             <h4 className="products__filterHeader">Kategorie</h4>
             <div className="products__items">
               {CatData.map((cat) => (
-                <div className="products__category" data-name={cat.name}>
-                  <p
-                    htmlFor="categoryName"
-                    className="products__name products__categoryName"
-                  >
-                    {cat.name}
-                  </p>
-                  <span className="products__howMany">112</span>
-                </div>
+                <Category name={cat.name} quantity="112" />
               ))}
             </div>
           </div>

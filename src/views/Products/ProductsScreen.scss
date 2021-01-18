@@ -76,6 +76,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1px 0;
+  cursor: pointer;
 }
 .products__checkbox {
   width: 20px;
@@ -101,6 +102,9 @@
   height: 85%;
   padding: 3px;
   margin-right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .products__categories {
   grid-area: categories;

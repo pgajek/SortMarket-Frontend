@@ -1,0 +1,13 @@
+@import "_variables.scss";
+
+.category {
+  &--active {
+    background-color: #fffaee;
+    .products__howMany {
+      background-color: #fff;
+    }
+    .products__name {
+      color: $mainOrange;
+    }
+  }
+}
