@@ -5,6 +5,7 @@ import { ReactComponent as Letter } from 'assets/icons/letter.svg';
 import { ReactComponent as Pin } from 'assets/icons/pin.svg';
 import { ReactComponent as Phone } from 'assets/icons/phone.svg';
 import Categories from 'assets/data/categories-data';
+import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="footer">
@@ -14,9 +15,15 @@ const Footer = () => {
         <ul className="footer__categoriesList">
           {Categories.map((cat) => (
             <li key={cat.name} className="footer__category">
-              <a href="#" className="footer__categoryLink">
+              <Link
+                to={{
+                  pathname: `/products/${cat.name}`,
+                  search: `?sort=${cat.name}`,
+                  state: { fromDashboard: true },
+                }}
+                className="footer__categoryLink">
                 {cat.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
