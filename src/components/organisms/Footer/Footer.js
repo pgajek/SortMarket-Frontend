@@ -16,13 +16,9 @@ const Footer = () => {
           {Categories.map((cat) => (
             <li key={cat.name} className="footer__category">
               <Link
-                to={{
-                  pathname: `/products/${cat.name}`,
-                  search: `?sort=${cat.name}`,
-                  state: { fromDashboard: true },
-                }}
+                to={`/products/${cat.name}`}
                 className="footer__categoryLink">
-                {cat.name}
+                {cat.name.replace('&', '/')}
               </Link>
             </li>
           ))}
