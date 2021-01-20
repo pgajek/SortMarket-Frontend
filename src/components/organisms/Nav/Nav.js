@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import './nav.scss';
-import { ReactComponent as Logo } from 'assets/icons/sort2.svg';
-import { ReactComponent as User } from 'assets/icons/user.svg';
-import { ReactComponent as Pointer } from 'assets/icons/pointer_arrow.svg';
-import { ReactComponent as Cart } from 'assets/icons/cart.svg';
-import Categories from 'assets/data/categories-data';
-import LoginPanel from 'components/molecules/LoginPanel/LoginPanel';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./nav.scss";
+import { ReactComponent as Logo } from "assets/icons/sort2.svg";
+import { ReactComponent as User } from "assets/icons/user.svg";
+import { ReactComponent as Pointer } from "assets/icons/pointer_arrow.svg";
+import { ReactComponent as Cart } from "assets/icons/cart.svg";
+import Categories from "assets/data/categories-data";
+import LoginPanel from "components/molecules/LoginPanel/LoginPanel";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [isOpen, handleBurgerClick] = useState(false);
@@ -20,18 +20,19 @@ const Nav = () => {
       <button
         className={
           isOpen
-            ? 'navigation__hamburgerBtn navigation__hamburgerBtn--active'
-            : 'navigation__hamburgerBtn'
+            ? "navigation__hamburgerBtn navigation__hamburgerBtn--active"
+            : "navigation__hamburgerBtn"
         }
-        onClick={() => handleBurgerClick(!isOpen)}>
+        onClick={() => handleBurgerClick(!isOpen)}
+      >
         <div></div>
       </button>
       <nav className={isOpen ? `navigation navigation--active` : `navigation`}>
         <div className="navigation__mainBar">
           <div className="navigation__logo">
-            <a href="" className="navigation__logoLink">
+            <Link to="/" className="navigation__logoLink">
               <Logo className="logo_image" />
-            </a>
+            </Link>
           </div>
           <ul className="navigation__innerNav">
             <li className="navigation__innerNavItem">
@@ -78,11 +79,13 @@ const Nav = () => {
               <li
                 key={category.name}
                 className="navigation__category dropdown"
-                aria-haspopup="true">
+                aria-haspopup="true"
+              >
                 <Link
                   to={`/products/${category.name}`}
-                  className="navigation__link">
-                  {category.name.replace('&', '/')}
+                  className="navigation__link"
+                >
+                  {category.name.replace("&", "/")}
                 </Link>
                 <ul aria-label="submenu" className="dropdown-content">
                   {category.subCategories.map((item) => (
