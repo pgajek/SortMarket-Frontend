@@ -12,10 +12,10 @@
   grid-template-columns: 150px 1fr;
   grid-template-rows: 110px 45px 25px 25px;
   grid-template-areas:
-    "img price"
-    "name ."
-    "reviews form"
-    "rating form";
+    'img price'
+    'name .'
+    'reviews form'
+    'rating form';
   & > * {
     width: 100%;
     height: 100%;
@@ -32,7 +32,7 @@
   }
 }
 .card__productName {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.4rem;
   line-height: 1.9rem;
   color: #402e32;
@@ -40,7 +40,7 @@
 }
 .card__productPrice {
   color: #f4b536;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 2.5rem;
   line-height: 3.8rem;
@@ -52,7 +52,7 @@
 }
 .card__reviews {
   color: #dfe0df;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.4rem;
   line-height: 1.9rem;
   grid-area: reviews;
@@ -66,7 +66,7 @@
   appearance: none;
   border: 1px solid #cccccc;
   color: #dfe0df;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.4rem;
   height: 40px;
   padding: 5px 10px;
@@ -98,10 +98,10 @@
     grid-template-rows: 25px 25px 25px 50px;
     grid-row-gap: 13px;
     grid-template-areas:
-      "img name ."
-      "img price ."
-      "img rating reviews"
-      "img form form";
+      'img name .'
+      'img price .'
+      'img rating reviews'
+      'img form form';
     & > * {
       justify-content: flex-start;
       padding-left: 10px;
@@ -133,11 +133,11 @@
     grid-template-rows: 160px 25px 25px 50px;
     grid-row-gap: 10px;
     grid-template-areas:
-      "img img"
-      "name ."
-      "price ."
-      "rating reviews"
-      "form form";
+      'img img'
+      'name .'
+      'price .'
+      'rating reviews'
+      'form form';
     & > * {
       justify-content: flex-start;
     }

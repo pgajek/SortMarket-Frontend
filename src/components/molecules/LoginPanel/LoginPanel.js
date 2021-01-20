@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import "./LoginPanel.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { signin } from "store/actions/userActions";
+import React, { useState } from 'react';
+import './LoginPanel.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { signin } from 'store/actions/userActions';
+import { Link } from 'react-router-dom';
 
 const LoginPanel = () => {
   const [isLoginOpen, handleLoginOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const userSignin = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
@@ -17,9 +18,8 @@ const LoginPanel = () => {
   };
   return (
     <form
-      className={isLoginOpen ? "loginPanel loginPanel--active" : "loginPanel"}
-      onSubmit={submitHandler}
-    >
+      className={isLoginOpen ? 'loginPanel loginPanel--active' : 'loginPanel'}
+      onSubmit={submitHandler}>
       {isLoginOpen ? (
         <>
           <div className="loginPanel__panelField">
@@ -49,9 +49,14 @@ const LoginPanel = () => {
           </button>
         </>
       ) : (
-        <button className="btn" onClick={() => handleLoginOpen(true)}>
-          Zaloguj
-        </button>
+        <>
+          <button className="btn" onClick={() => handleLoginOpen(true)}>
+            Zaloguj
+          </button>
+          <Link to="/register" className="btn">
+            Zarejestruj
+          </Link>
+        </>
       )}
     </form>
   );
