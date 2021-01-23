@@ -1,0 +1,2 @@
+export const PRODUCTS_GET = "PRODUCTS_GET";
+export const PRODUCTS_REQUEST = "PRODUCTS_REQUEST";

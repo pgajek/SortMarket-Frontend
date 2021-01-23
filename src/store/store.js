@@ -4,11 +4,13 @@ import thunk from "redux-thunk";
 import Cookie from "js-cookie";
 import { userReducer } from "store/reducers/userReducer";
 import { cartReducer } from "store/reducers/cartReducer";
+import { productsReducer } from "store/reducers/productsReducer";
 
 const initialState = {};
 const reducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
+  products: productsReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

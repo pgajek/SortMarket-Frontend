@@ -4,15 +4,19 @@ import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "constants/cartConstants";
 
 const addToCart = (productId, qty) => async (dispatch, getState) => {
   try {
-    const { data } = await Axios.get("/api/products/" + productId);
+    const { data } = await Axios.get(
+      "http://localhost:9000/api/v1/products/" + productId
+    );
     dispatch({
       type: CART_ADD_ITEM,
       payload: {
-        product: data._id,
+        id: data._id,
         name: data.name,
         image: data.image,
         price: data.price,
         countInStock: data.countInStock,
+        unit: data.unit,
+        price: data.price,
         qty,
       },
     });
