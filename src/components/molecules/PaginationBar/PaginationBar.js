@@ -18,9 +18,7 @@ const PaginationBar = () => {
     } else {
       newOffset = (value - 1) * 10 + 2;
     }
-
     setOffset(newOffset);
-    console.log(offset);
   };
   const createPages = () => {
     let items = [];
