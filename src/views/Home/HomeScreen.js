@@ -12,14 +12,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "store/actions/productsActions";
 const HomeScreen = () => {
   const productsList = useSelector((state) => state.products);
-  const { products, loading } = productsList;
+  const { products, loading, offset, per_page } = productsList;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProducts());
-
-    return () => {};
+    dispatch(getProducts(offset, per_page));
   }, []);
-
   return (
     <>
       <Nav />
