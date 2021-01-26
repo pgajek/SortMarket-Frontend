@@ -24,6 +24,7 @@ function productsReducer(
     case SET_PRODUCTS_OPTIONS:
       return {
         ...state,
+        loading: false,
         per_page: action.payload.per_page,
         offset: action.payload.offset,
       };
