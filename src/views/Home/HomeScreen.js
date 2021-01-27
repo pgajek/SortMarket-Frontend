@@ -28,6 +28,8 @@ const HomeScreen = () => {
         ) : (
           products.map((item, index) => (
             <ProductCard
+              id={item._id}
+              key={item._id}
               rating={4}
               quantity={item.countInStock}
               unit={item.unit}
