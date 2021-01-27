@@ -27,11 +27,13 @@ const PaginationBar = () => {
   const handleButtonClick = () => {
     setAddedCount(addedCount + 12);
     setPerPage(per_page + 12);
+    setOffset(0);
+    setActivePage(1);
   };
   useEffect(() => {
     dispatch(setProductsOptions(offset, per_page));
     dispatch(getProducts(offset, per_page));
-  }, [offset, per_page]);
+  }, [offset, per_page, activePage]);
   const createPages = () => {
     let items = [];
     for (let i = 1; i <= pages; i++) {
