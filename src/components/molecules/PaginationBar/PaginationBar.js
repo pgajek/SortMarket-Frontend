@@ -54,7 +54,8 @@ const PaginationBar = () => {
     <div className="paginationBar">
       <div className="paginationBar__results">
         {!loading && per_page * activePage - per_page} -
-        {!loading && per_page * activePage} of {productsCount} results
+        {!loading && per_page * activePage - per_page + products.length} of{" "}
+        {productsCount} results
       </div>
       <div className="paginationBar__pages">
         <span className="paginationBar__title">Page:</span>
