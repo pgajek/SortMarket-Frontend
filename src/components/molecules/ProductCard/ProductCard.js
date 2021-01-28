@@ -14,7 +14,7 @@ const ProductCard = ({
   currency,
   img,
 }) => {
-  const [selectedQty, setSelectedQty] = useState(0);
+  const [selectedQty, setSelectedQty] = useState(1);
   const dispatch = useDispatch();
   const stars = [1, 2, 3, 4, 5];
   const createSelectItems = () => {
@@ -26,6 +26,7 @@ const ProductCard = ({
   };
   const handleAddToCart = (e) => {
     e.preventDefault();
+    console.log(selectedQty);
     dispatch(addToCart(id, selectedQty));
   };
   return (
@@ -53,7 +54,7 @@ const ProductCard = ({
           name="quantity"
           id="quantity"
           className="card__quantity"
-          onChange={(e) => setSelectedQty(e.target.value)}
+          onChange={(e) => setSelectedQty(parseInt(e.target.value))}
           value={selectedQty}
         >
           {createSelectItems()}
