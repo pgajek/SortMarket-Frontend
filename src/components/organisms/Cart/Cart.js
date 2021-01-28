@@ -12,7 +12,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   let size = useComponentSize(ref);
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
 
   return (
     <div
@@ -47,7 +46,8 @@ const Cart = () => {
               <span className="cart__name">{item.product.name}</span>
               <span className="cart__quantity">{item.quantity}</span>
               <span className="cart__productPrice">
-                {item.product.price.priceGross} {item.product.price.currency}
+                {item.product.price.priceGross * item.quantity}{" "}
+                {item.product.price.currency}
               </span>
             </li>
           ))
