@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Cart.scss";
 import { Link } from "react-router-dom";
 import { ReactComponent as CartIcon } from "assets/icons/cart.svg";
 import { useRef } from "react";
 import useComponentSize from "@rehooks/component-size";
+import { useSelector, useDispatch } from "react-redux";
 
 const Cart = () => {
   const [hide, handleHide] = useState(false);
   let ref = useRef(null);
+  const dispatch = useDispatch();
   let size = useComponentSize(ref);
+  const { cartItems } = useSelector((state) => state.cart);
+  console.log(cartItems);
+
   return (
     <div
       ref={ref}
@@ -34,16 +39,19 @@ const Cart = () => {
         <span className="cart__productPrice">Cena</span>
       </div>
       <ul className="cart__products">
-        <li className="cart__field cart__product">
-          <span className="cart__name">Fajnna cegla</span>
-          <span className="cart__quantity">1</span>
-          <span className="cart__productPrice">36.99 PLN</span>
-        </li>
-        <li className="cart__field cart__product">
-          <span className="cart__name">Fajnna cegla</span>
-          <span className="cart__quantity">1</span>
-          <span className="cart__productPrice">0.00 PLN</span>
-        </li>
+        {cartItems.length === 0 ? (
+          <div>Cart is empty</div>
+        ) : (
+          cartItems.map((item) => (
+            <li className="cart__field cart__product" key={item.id}>
+              <span className="cart__name">{item.product.name}</span>
+              <span className="cart__quantity">{item.quantity}</span>
+              <span className="cart__productPrice">
+                {item.product.price.priceGross} {item.product.price.currency}
+              </span>
+            </li>
+          ))
+        )}
       </ul>
       <div className="cart__summary">
         <p className="cart__sumName">Razem:</p>
