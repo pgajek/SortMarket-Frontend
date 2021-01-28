@@ -26,7 +26,7 @@ const ProductCard = ({
   };
   const handleAddToCart = (e) => {
     e.preventDefault();
-    console.log(selectedQty);
+
     dispatch(addToCart(id, selectedQty));
   };
   return (
