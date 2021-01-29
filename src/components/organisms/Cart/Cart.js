@@ -15,7 +15,7 @@ const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
 
   const countCartPrice = () => {
-    let price = cartPrice;
+    let price = 0;
     cartItems.forEach((item) => {
       price +=
         parseInt(item.product.price.priceGross) * parseInt(item.quantity);
