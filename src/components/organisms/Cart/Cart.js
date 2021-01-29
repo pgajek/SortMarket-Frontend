@@ -8,11 +8,24 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Cart = () => {
   const [hide, handleHide] = useState(false);
+  const [cartPrice, setCartPrice] = useState(0);
   let ref = useRef(null);
   const dispatch = useDispatch();
   let size = useComponentSize(ref);
   const { cartItems } = useSelector((state) => state.cart);
 
+  const countCartPrice = () => {
+    let price = cartPrice;
+    cartItems.forEach((item) => {
+      price +=
+        parseInt(item.product.price.priceGross) * parseInt(item.quantity);
+    });
+
+    setCartPrice(price);
+  };
+  useEffect(() => {
+    countCartPrice();
+  }, [cartItems]);
   return (
     <div
       ref={ref}
@@ -55,7 +68,10 @@ const Cart = () => {
       </ul>
       <div className="cart__summary">
         <p className="cart__sumName">Razem:</p>
-        <div className="cart__sum">36.99 PLN</div>
+        <div className="cart__sum">
+          {cartPrice}{" "}
+          {cartItems.length > 0 && cartItems[0].product.price.currency}
+        </div>
       </div>
       <Link to="/cart" className="btn cart__btn">
         Kup Teraz
