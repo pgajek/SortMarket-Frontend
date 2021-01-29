@@ -62,6 +62,7 @@ const Cart = () => {
                 {item.product.price.priceGross * item.quantity}{" "}
                 {item.product.price.currency}
               </span>
+              <button className="btn cart__removeBtn">X</button>
             </li>
           ))
         )}

@@ -71,6 +71,7 @@
   display: none;
 }
 .cart__field {
+  position: relative;
   font-family: "Inter", sans-serif;
   font-size: 1.4rem;
   line-height: 1.9rem;
@@ -81,6 +82,9 @@
   border-bottom: 1px solid #dddddd;
   * {
     width: 100%;
+  }
+  &:hover > .cart__removeBtn {
+    display: flex;
   }
 }
 .cart__tableNames {
@@ -121,6 +125,19 @@
   transform: translateX(-50%);
   text-decoration: none;
   text-align: center;
+}
+.cart__removeBtn {
+  position: absolute;
+  display: none;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 5px;
+  background-color: rgb(214, 9, 9);
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: none;
 }
 @media (min-width: 1024px) {
   .cart {
