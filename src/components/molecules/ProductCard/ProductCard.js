@@ -15,6 +15,7 @@ const ProductCard = ({
   img,
 }) => {
   const [selectedQty, setSelectedQty] = useState(1);
+
   const dispatch = useDispatch();
   const stars = [1, 2, 3, 4, 5];
   const createSelectItems = () => {
@@ -29,6 +30,7 @@ const ProductCard = ({
 
     dispatch(addToCart(id, selectedQty));
   };
+
   return (
     <div className="card">
       <div className="card__img">
