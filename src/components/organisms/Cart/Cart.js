@@ -5,6 +5,7 @@ import { ReactComponent as CartIcon } from "assets/icons/cart.svg";
 import { useRef } from "react";
 import useComponentSize from "@rehooks/component-size";
 import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart } from "store/actions/cartActions";
 
 const Cart = () => {
   const [hide, handleHide] = useState(false);
@@ -22,6 +23,9 @@ const Cart = () => {
     });
 
     setCartPrice(price);
+  };
+  const handleRemoveBtnClick = (id) => {
+    dispatch(removeFromCart(id));
   };
   useEffect(() => {
     countCartPrice();
@@ -55,14 +59,23 @@ const Cart = () => {
           <div>Cart is empty</div>
         ) : (
           cartItems.map((item) => (
-            <li className="cart__field cart__product" key={item.id}>
+            <li
+              className="cart__field cart__product"
+              key={item._id}
+              id={item._id}
+            >
               <span className="cart__name">{item.product.name}</span>
               <span className="cart__quantity">{item.quantity}</span>
               <span className="cart__productPrice">
                 {item.product.price.priceGross * item.quantity}{" "}
                 {item.product.price.currency}
               </span>
-              <button className="btn cart__removeBtn">X</button>
+              <button
+                className="btn cart__removeBtn"
+                onClick={() => handleRemoveBtnClick(item.product._id)}
+              >
+                X
+              </button>
             </li>
           ))
         )}

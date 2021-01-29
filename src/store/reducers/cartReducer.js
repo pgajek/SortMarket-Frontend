@@ -11,7 +11,6 @@ function cartReducer(state = { cartItems: [] }, action) {
           ...state,
         };
       }
-
       return {
         ...state,
         cartItems: [
@@ -23,7 +22,7 @@ function cartReducer(state = { cartItems: [] }, action) {
       return {
         ...state,
         cartItems: state.cartItems.filter(
-          (x) => x.product.id !== action.payload.product.id
+          (x) => x.product._id !== action.payload
         ),
       };
     default:
