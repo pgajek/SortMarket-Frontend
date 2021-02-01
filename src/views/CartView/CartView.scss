@@ -151,7 +151,84 @@
   font-size: 1.4rem;
   line-height: 2.1rem;
 }
-
+.cartView__shippingMethod,
+.cartView__paymentMethod {
+  align-items: flex-start;
+}
+.cartView__radioField {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-left: 3%;
+}
+.cartView__shipmentPrice {
+  color: #dfe0df;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+}
+.cartView__radio {
+  border: 1px solid #bbbbbb;
+  height: 16px;
+  width: 16px;
+}
+.cartView__message {
+  label {
+    align-self: flex-start;
+    margin-left: 5%;
+  }
+}
+.cartView__textarea {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #bbbbbb;
+}
+.cartView__copy {
+  justify-content: center;
+  padding: 10px;
+  color: #dfe0df;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
+  font-family: "Inter", sans-serif;
+}
+.cartView__summaryContainer {
+  border-bottom: 1px solid #dddddd;
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px 0;
+  color: #402e32;
+  font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cartView__summaryField {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+.cartView__method {
+  color: orange;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.cartView__summaryName {
+}
+.cartView__summaryPrice {
+}
+.cartView__summaryRight {
+}
+.cartView__summaryLeft {
+}
+.cartView__summaryBtn {
+  width: 98%;
+}
 @media (orientation: landscape) {
   .cartView__product {
     grid-template-areas: "img name price quantity buttons";
