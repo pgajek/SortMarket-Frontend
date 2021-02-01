@@ -306,6 +306,7 @@ const ProductScreen = () => {
               </span>
             </div>
           </div>
+          <div className="cartView__finalPrice">36.99 PLN</div>
           <button className="btn cartView__summaryBtn">
             Przejdz do płatnosci
           </button>
