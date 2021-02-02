@@ -29,6 +29,7 @@ const ProductScreen = () => {
       priceNett +=
         parseInt(item.product.price.priceNett) * parseInt(item.quantity);
     });
+    console.log(priceGross);
     setCartPriceGross(priceGross);
     setCartPriceNett(priceNett);
   };
@@ -41,6 +42,7 @@ const ProductScreen = () => {
   };
   const updateProductQuantity = (e, id) => {
     dispatch(updateQuantity(id, e.target.value));
+    countCartPrice();
   };
   const onSubmit = (values) => {
     console.log(values);
@@ -48,6 +50,7 @@ const ProductScreen = () => {
   useEffect(() => {
     countCartPrice();
   }, [cartItems]);
+
   return (
     <>
       <Nav />
@@ -65,7 +68,6 @@ const ProductScreen = () => {
                   {item.product.price.priceGross} {item.product.price.currency}
                 </span>
                 <select
-                  ref={register()}
                   name={`${item.product.name}Qty`}
                   id={`${item.product.name}Qty`}
                   className="cartView__productQuantity"
