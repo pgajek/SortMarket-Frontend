@@ -10,23 +10,27 @@ import { useForm } from "react-hook-form";
 
 const ProductScreen = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  const [cartPrice, setCartPrice] = useState(0);
+  const [cartPriceGross, setCartPriceGross] = useState(0);
+  const [cartPriceNett, setCartPriceNett] = useState(0);
+  const [deliveryPrice, setDeliveryPrice] = useState(0);
+
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
   const handleRemoveBtnClick = (id) => {
     dispatch(removeFromCart(id));
   };
-  const onSubmit = (values) => {
-    console.log(values);
-  };
-  const countCartPrice = () => {
-    let price = 0;
-    cartItems.forEach((item) => {
-      price +=
-        parseInt(item.product.price.priceGross) * parseInt(item.quantity);
-    });
 
-    setCartPrice(price);
+  const countCartPrice = () => {
+    let priceGross = 0;
+    let priceNett = 0;
+    cartItems.forEach((item) => {
+      priceGross +=
+        parseInt(item.product.price.priceGross) * parseInt(item.quantity);
+      priceNett +=
+        parseInt(item.product.price.priceNett) * parseInt(item.quantity);
+    });
+    setCartPriceGross(priceGross);
+    setCartPriceNett(priceNett);
   };
   const createSelectItems = (quantity, unit) => {
     let items = [];
@@ -34,6 +38,12 @@ const ProductScreen = () => {
       items.push(<option key={i} value={`${i}`}>{`${i} ${unit}`}</option>);
     }
     return items;
+  };
+  const updateProductQuantity = (e, id) => {
+    dispatch(updateQuantity(id, e.target.value));
+  };
+  const onSubmit = (values) => {
+    console.log(values);
   };
   useEffect(() => {
     countCartPrice();
@@ -59,8 +69,13 @@ const ProductScreen = () => {
                   name={`${item.product.name}Qty`}
                   id={`${item.product.name}Qty`}
                   className="cartView__productQuantity"
+                  value={item.quantity}
+                  onChange={(e) => updateProductQuantity(e, item.product._id)}
                 >
-                  {createSelectItems(item.quantity, item.product.unit)}
+                  {createSelectItems(
+                    item.product.countInStock,
+                    item.product.unit
+                  )}
                 </select>
                 <div className="cartView__btns">
                   <button className="cartView__btn btn">
@@ -162,9 +177,11 @@ const ProductScreen = () => {
             <h3 className="cartView__header">Metoda wysyłki:</h3>
             <div className="cartView__radioField">
               <input
-                name="kurier"
+                name="deliveryOption"
                 id="kurier"
                 type="radio"
+                value={19.99}
+                onChange={(e) => setDeliveryPrice(e.target.value)}
                 className="cartView__radio"
               />
               <label htmlFor="kurier" className="cartView__label">
@@ -174,10 +191,12 @@ const ProductScreen = () => {
             </div>
             <div className="cartView__radioField">
               <input
-                name="dostawa"
+                name="deliveryOption"
                 id="dostawa"
                 type="radio"
                 className="cartView__radio"
+                value={29.99}
+                onChange={(e) => setDeliveryPrice(e.target.value)}
               />
               <label htmlFor="dostawa" className="cartView__label">
                 Dostawa do klienta{" "}
@@ -186,10 +205,12 @@ const ProductScreen = () => {
             </div>
             <div className="cartView__radioField">
               <input
-                name="odbior"
+                name="deliveryOption"
                 id="odbior"
                 type="radio"
                 className="cartView__radio"
+                value={0}
+                onChange={(e) => setDeliveryPrice(e.target.value)}
               />
               <label htmlFor="odbior" className="cartView__label">
                 Odbiór na miejscu{" "}
@@ -201,7 +222,7 @@ const ProductScreen = () => {
             <h3 className="cartView__header">Metoda płatności</h3>
             <div className="cartView__radioField">
               <input
-                name="namiejscu"
+                name="paymentOption"
                 id="namiejscu"
                 type="radio"
                 className="cartView__radio"
@@ -212,7 +233,7 @@ const ProductScreen = () => {
             </div>
             <div className="cartView__radioField">
               <input
-                name="przelew"
+                name="paymentOption"
                 id="przelew"
                 type="radio"
                 className="cartView__radio"
@@ -223,8 +244,8 @@ const ProductScreen = () => {
             </div>
             <div className="cartView__radioField">
               <input
-                name="kartą"
-                id="kartą"
+                name="paymentOption"
+                id="karta"
                 type="radio"
                 className="cartView__radio"
               />
@@ -284,17 +305,22 @@ const ProductScreen = () => {
             <div className="cartView__summaryField">
               <span className="cartView__summaryName">Razem netto </span>
               <span className="cartView__summaryPrice cartView__priceNett">
-                36.99 PLN
+                {cartPriceNett}{" "}
+                {cartItems.length > 0 && cartItems[0].product.price.currency}
               </span>
             </div>
             <div className="cartView__summaryField">
               <span className="cartView__summaryName">Razem brutto</span>
               <span className="cartView__summaryPrice cartView__priceGross">
-                36.99 PLN
+                {cartPriceGross}{" "}
+                {cartItems.length > 0 && cartItems[0].product.price.currency}
               </span>
             </div>
           </div>
-          <div className="cartView__finalPrice">36.99 PLN</div>
+          <div className="cartView__finalPrice">
+            {cartPriceGross + parseInt(deliveryPrice)}{" "}
+            {cartItems.length > 0 && cartItems[0].product.price.currency}
+          </div>
           <button className="btn cartView__summaryBtn">
             Przejdz do płatnosci
           </button>

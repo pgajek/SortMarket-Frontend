@@ -33,11 +33,15 @@ function cartReducer(state = { cartItems: [] }, action) {
       };
     case CART_UPDATE_QUANTITY:
       const chosenItem = state.cartItems.filter(
-        (x) => x.product._id === action.payload
+        (x) => x.product._id === action.payload.productId
       );
-      const index = state.cartItems.indexOf(chosenItem);
+
+      const index = state.cartItems.indexOf(...chosenItem);
+
       const newCartItems = state.cartItems;
-      cartItems[index].quantity = action.payload.quantity;
+
+      newCartItems[index].quantity = parseInt(action.payload.quantity);
+
       return {
         ...state,
         cartItems: newCartItems,

@@ -32,8 +32,11 @@ const removeFromCart = (productId) => (dispatch, getState) => {
   } = getState();
   Cookie.set("cartItems", JSON.stringify(cartItems));
 };
-const updateQuantity = (productId) => (dispatch, getState) => {
-  dispatch({ type: CART_UPDATE_QUANTITY, payload: productId });
+const updateQuantity = (productId, qty) => (dispatch, getState) => {
+  dispatch({
+    type: CART_UPDATE_QUANTITY,
+    payload: { productId, quantity: qty },
+  });
   const {
     cart: { cartItems },
   } = getState();
