@@ -1,4 +1,8 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "constants/cartConstants";
+import {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  CART_UPDATE_QUANTITY,
+} from "constants/cartConstants";
 import Cookie from "js-cookie";
 
 function cartReducer(state = { cartItems: [] }, action) {
@@ -10,6 +14,7 @@ function cartReducer(state = { cartItems: [] }, action) {
       if (product) {
         return {
           ...state,
+          cartItems: [...state.cartItems],
         };
       }
       return {
@@ -25,6 +30,17 @@ function cartReducer(state = { cartItems: [] }, action) {
         cartItems: state.cartItems.filter(
           (x) => x.product._id !== action.payload
         ),
+      };
+    case CART_UPDATE_QUANTITY:
+      const chosenItem = state.cartItems.filter(
+        (x) => x.product._id === action.payload
+      );
+      const index = state.cartItems.indexOf(chosenItem);
+      const newCartItems = state.cartItems;
+      cartItems[index].quantity = action.payload.quantity;
+      return {
+        ...state,
+        cartItems: newCartItems,
       };
     default:
       return state;
