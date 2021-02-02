@@ -282,9 +282,10 @@
     margin: 0;
   }
   .cartView__summary {
-    max-height: 500px;
+    min-height: 500px;
     max-width: 500px;
     display: flex;
+    align-self: flex-start;
     flex-direction: column;
     justify-content: space-between;
   }
