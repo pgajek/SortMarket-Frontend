@@ -61,8 +61,8 @@ const Cart = () => {
           cartItems.map((item) => (
             <li
               className="cart__field cart__product"
-              key={item._id}
-              id={item._id}
+              key={item.product._id}
+              id={item.product._id}
             >
               <span className="cart__name">{item.product.name}</span>
               <span className="cart__quantity">{item.quantity}</span>

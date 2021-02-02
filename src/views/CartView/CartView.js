@@ -1,90 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "components/organisms/Nav/Nav";
 import Footer from "components/organisms/Footer/Footer";
 import { ReactComponent as Heart } from "assets/icons/heartIcon.svg";
 import { ReactComponent as Basket } from "assets/icons/basketIcon.svg";
 import "./CartView.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart, updateQuantity } from "store/actions/cartActions";
+import { useForm } from "react-hook-form";
 
 const ProductScreen = () => {
+  const { cartItems } = useSelector((state) => state.cart);
+  const [cartPrice, setCartPrice] = useState(0);
+  const { register, handleSubmit, errors } = useForm();
+  const dispatch = useDispatch();
+  const handleRemoveBtnClick = (id) => {
+    dispatch(removeFromCart(id));
+  };
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+  const countCartPrice = () => {
+    let price = 0;
+    cartItems.forEach((item) => {
+      price +=
+        parseInt(item.product.price.priceGross) * parseInt(item.quantity);
+    });
+
+    setCartPrice(price);
+  };
+  const createSelectItems = (quantity, unit) => {
+    let items = [];
+    for (let i = 1; i <= quantity; i++) {
+      items.push(<option key={i} value={`${i}`}>{`${i} ${unit}`}</option>);
+    }
+    return items;
+  };
+  useEffect(() => {
+    countCartPrice();
+  }, [cartItems]);
   return (
     <>
       <Nav />
       <div className="cartView">
-        <form className="cartView__form">
+        <form className="cartView__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="cartView__box cartView__cart">
             <h3 className="cartView__header">Koszyk</h3>
-            <div className="cartView__product">
-              <div className="cartView__imgBox">
-                <img src="assets/img/test.jpg" alt="" />
+            {cartItems.map((item) => (
+              <div className="cartView__product" key={item._id} id={item._id}>
+                <div className="cartView__imgBox">
+                  <img src="assets/img/test.jpg" alt="" />
+                </div>
+                <p className="cartView__productName">{item.product.name}</p>
+                <span className="cartView__productPrice">
+                  {item.product.price.priceGross} {item.product.price.currency}
+                </span>
+                <select
+                  ref={register()}
+                  name={`${item.product.name}Qty`}
+                  id={`${item.product.name}Qty`}
+                  className="cartView__productQuantity"
+                >
+                  {createSelectItems(item.quantity, item.product.unit)}
+                </select>
+                <div className="cartView__btns">
+                  <button className="cartView__btn btn">
+                    <Heart />
+                  </button>
+                  <button
+                    className="cartView__btn btn"
+                    onClick={() => handleRemoveBtnClick(item.product._id)}
+                  >
+                    <Basket />
+                  </button>
+                </div>
               </div>
-              <p className="cartView__productName">Cegla z cegłolandii</p>
-              <span className="cartView__productPrice">39.99 PLN</span>
-              <select
-                name="quantity"
-                id="quantity"
-                className="cartView__productQuantity"
-              >
-                <option value="1">1 szt</option>
-                <option value="2">2 szt</option>
-                <option value="3">3 szt</option>
-              </select>
-              <div className="cartView__btns">
-                <button className="cartView__btn btn">
-                  <Heart />
-                </button>
-                <button className="cartView__btn btn">
-                  <Basket />
-                </button>
-              </div>
-            </div>
-            <div className="cartView__product">
-              <div className="cartView__imgBox">
-                <img src="assets/img/test.jpg" alt="" />
-              </div>
-              <p className="cartView__productName">Cegla z cegłolandii</p>
-              <span className="cartView__productPrice">39.99 PLN</span>
-              <select
-                name="quantity"
-                id="quantity"
-                className="cartView__productQuantity"
-              >
-                <option value="1">1 szt</option>
-                <option value="2">2 szt</option>
-                <option value="3">3 szt</option>
-              </select>
-              <div className="cartView__btns">
-                <button className="cartView__btn btn">
-                  <Heart />
-                </button>
-                <button className="cartView__btn btn">
-                  <Basket />
-                </button>
-              </div>
-            </div>
-            <div className="cartView__product">
-              <div className="cartView__imgBox">
-                <img src="assets/img/test.jpg" alt="" />
-              </div>
-              <p className="cartView__productName">Cegla z cegłolandii</p>
-              <span className="cartView__productPrice">39.99 PLN</span>
-              <select
-                name="quantity"
-                id="quantity"
-                className="cartView__productQuantity"
-              >
-                <option value="1">1 szt</option>
-                <option value="2">2 szt</option>
-                <option value="3">3 szt</option>
-              </select>
-              <div className="cartView__btns">
-                <button className="cartView__btn btn">
-                  <Heart />
-                </button>
-                <button className="cartView__btn btn">
-                  <Basket />
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="cartView__box cartView__shippingDetails">
             <h3 className="cartView__header">Szczegóły wysyłki:</h3>
@@ -119,7 +109,7 @@ const ProductScreen = () => {
                 id="number"
                 name="number"
                 className="cartView__input"
-                inputmode="tel"
+                inputMode="tel"
               />
             </div>
             <div className="cartView__field">
@@ -131,7 +121,7 @@ const ProductScreen = () => {
                 id="email"
                 name="email"
                 className="cartView__input"
-                inputmode="email"
+                inputMode="email"
               />
             </div>
             <div className="cartView__field">
@@ -263,22 +253,20 @@ const ProductScreen = () => {
         <div className="cartView__box cartView__summary">
           <h3 className="cartView__header">Podsumowanie</h3>
           <div className="cartView__summaryContainer">
-            <div className="cartView__summaryField">
-              <span className="cartView__summaryName .catView__summaryLeft">
-                Cegła nie fajna
-              </span>
-              <span className="cartView__summaryPrice .cartView__summaryRight">
-                36.99 PLN
-              </span>
-            </div>
-            <div className="cartView__summaryField">
-              <span className="cartView__summaryName cartView__summaryLeft">
-                Cegła fajna
-              </span>
-              <span className="cartView__summaryPrice cartView__summaryRight">
-                26.99 PLN
-              </span>
-            </div>
+            {cartItems.map((item) => (
+              <div className="cartView__summaryField">
+                <span className="cartView__summaryName .catView__summaryLeft">
+                  {item.product.name}
+                </span>
+                <span className="cartView__summaryQuantity">
+                  {item.quantity}
+                </span>
+                <span className="cartView__summaryPrice">
+                  {item.product.price.priceGross * item.quantity}{" "}
+                  {item.product.price.currency}
+                </span>
+              </div>
+            ))}
           </div>
           <div className="cartView__summaryContainer">
             <span className=" cartView__summaryLeft">Metoda płatności</span>
