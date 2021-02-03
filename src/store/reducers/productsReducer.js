@@ -1,11 +1,13 @@
 import {
   PRODUCTS_GET,
   PRODUCTS_REQUEST,
+  PRODUCT_GET,
+  PRODUCT_REQUEST,
   SET_PRODUCTS_OPTIONS,
 } from "constants/productsConstants";
 
 function productsReducer(
-  state = { products: [], offset: 0, per_page: 10 },
+  state = { products: [], offset: 0, per_page: 10, activeProduct: [] },
   action
 ) {
   switch (action.type) {
@@ -25,7 +27,7 @@ function productsReducer(
       return {
         ...state,
         loading: false,
-        product: action.payload.product,
+        activeProduct: action.payload,
       };
     case PRODUCT_REQUEST:
       return {

@@ -3,6 +3,8 @@ import Cookie from "js-cookie";
 import {
   PRODUCTS_GET,
   PRODUCTS_REQUEST,
+  PRODUCT_GET,
+  PRODUCT_REQUEST,
   SET_PRODUCTS_OPTIONS,
 } from "constants/productsConstants";
 
@@ -26,11 +28,11 @@ export const getProducts = (offset = 0, per_page = 10) => async (dispatch) => {
 };
 export const getProduct = (id) => async (dispatch) => {
   try {
-    dispatch({ type: PRODUCTS_REQUEST });
+    dispatch({ type: PRODUCT_REQUEST });
     const { data } = await Axios.get(
-      `http://localhost:9000/api/v1/products/:${id}`
+      `http://localhost:9000/api/v1/products/${id}`
     );
-
+    console.log(data);
     dispatch({
       type: PRODUCT_GET,
       payload: data,
