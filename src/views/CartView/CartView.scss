@@ -150,6 +150,13 @@
   font-family: "Inter", sans-serif;
   font-size: 1.4rem;
   line-height: 2.1rem;
+  &--error {
+    border: 1px solid red;
+  }
+}
+.cartView__error {
+  color: red;
+  font-size: 1rem;
 }
 .cartView__shippingMethod,
 .cartView__paymentMethod {
