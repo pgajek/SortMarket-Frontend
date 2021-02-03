@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "components/organisms/Nav/Nav";
 import Footer from "components/organisms/Footer/Footer";
 import ProductCard from "components/molecules/ProductCard/ProductCard";
@@ -7,6 +7,7 @@ import Cart from "components/organisms/Cart/Cart";
 import "./ProductScreen.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "store/actions/productsActions";
+import { addToCart } from "store/actions/cartActions";
 
 const ProductScreen = ({ match }) => {
   const stars = [1, 2, 3, 4, 5];
@@ -15,8 +16,21 @@ const ProductScreen = ({ match }) => {
 
   const { loading, activeProduct } = useSelector((state) => state.products);
   const state = useSelector((state) => state.products);
-
+  const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
+
+  const createSelectItems = (qty, unit) => {
+    let items = [];
+    for (let i = 1; i <= qty; i++) {
+      items.push(<option key={i} value={`${i}`}>{`${i} ${unit}`}</option>);
+    }
+    return items;
+  };
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+
+    dispatch(addToCart(id, quantity));
+  };
   useEffect(() => {
     dispatch(getProduct(id));
   }, []);
@@ -83,9 +97,12 @@ const ProductScreen = ({ match }) => {
               name="quantity"
               id="quantity"
               className="productScreen__quantity"
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
             >
-              <option value="1">1</option>
-              {/* {createSelectItems()} */}
+              {createSelectItems(
+                activeProduct[0].countInStock,
+                activeProduct[0].unit
+              )}
             </select>
             <label htmlFor="size" className="productScreen__selectLabel">
               Rozmiar
@@ -94,7 +111,12 @@ const ProductScreen = ({ match }) => {
               <option value="1">1</option>
               {/* {createSelectItems()} */}
             </select>
-            <button className="btn productScreen__btn">Do koszyka</button>
+            <button
+              className="btn productScreen__btn"
+              onClick={(e) => handleButtonClick(e)}
+            >
+              Do koszyka
+            </button>
           </form>
         </div>
       )}
