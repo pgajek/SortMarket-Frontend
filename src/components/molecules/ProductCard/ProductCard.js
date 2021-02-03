@@ -3,7 +3,7 @@ import "./ProductCard.scss";
 import { ReactComponent as Star } from "assets/icons/star.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "store/actions/cartActions";
-
+import { Link } from "react-router-dom";
 const ProductCard = ({
   id,
   rating,
@@ -36,7 +36,9 @@ const ProductCard = ({
       <div className="card__img">
         <img src={img} />
       </div>
-      <h2 className="card__productName">{name}</h2>
+      <h2 className="card__productName">
+        <Link to={`/product/${id}`}>{name}</Link>
+      </h2>
       <span className="card__productPrice">{`${price} ${currency}`}</span>
       <div className="card__rating">
         {stars.map((star, index) => (
