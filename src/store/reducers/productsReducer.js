@@ -21,6 +21,17 @@ function productsReducer(
         ...state,
         loading: true,
       };
+    case PRODUCT_GET:
+      return {
+        ...state,
+        loading: false,
+        product: action.payload.product,
+      };
+    case PRODUCT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
     case SET_PRODUCTS_OPTIONS:
       return {
         ...state,

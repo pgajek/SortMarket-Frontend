@@ -24,6 +24,21 @@ export const getProducts = (offset = 0, per_page = 10) => async (dispatch) => {
     console.log(error);
   }
 };
+export const getProduct = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCTS_REQUEST });
+    const { data } = await Axios.get(
+      `http://localhost:9000/api/v1/products/:${id}`
+    );
+
+    dispatch({
+      type: PRODUCT_GET,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const setProductsOptions = (offset, per_page) => (dispatch) => {
   dispatch({
