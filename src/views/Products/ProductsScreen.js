@@ -1,22 +1,24 @@
-import React from 'react';
-import Nav from 'components/organisms/Nav/Nav';
-import Footer from 'components/organisms/Footer/Footer';
-import Cart from 'components/organisms/Cart/Cart';
-import ProductCard from 'components/molecules/ProductCard/ProductCard';
-import AddBanner from 'components/atoms/AddBanner/AddBanner';
-import SearchBar from 'components/molecules/SearchBar/SearchBar';
-import PaginationBar from 'components/molecules/PaginationBar/PaginationBar';
-import { ReactComponent as Star } from 'assets/icons/star.svg';
-import './ProductsScreen.scss';
-import CatData from 'assets/data/categories-data';
-import Brand from 'components/atoms/Brand/Brand';
-import Category from 'components/atoms/Category/Category';
-
+import React from "react";
+import Nav from "components/organisms/Nav/Nav";
+import Footer from "components/organisms/Footer/Footer";
+import Cart from "components/organisms/Cart/Cart";
+import ProductCard from "components/molecules/ProductCard/ProductCard";
+import AddBanner from "components/atoms/AddBanner/AddBanner";
+import SearchBar from "components/molecules/SearchBar/SearchBar";
+import PaginationBar from "components/molecules/PaginationBar/PaginationBar";
+import { ReactComponent as Star } from "assets/icons/star.svg";
+import "./ProductsScreen.scss";
+import CatData from "assets/data/categories-data";
+import Brand from "components/atoms/Brand/Brand";
+import Category from "components/atoms/Category/Category";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "store/actions/productsActions";
 const ProductsScreen = ({ match }) => {
+  const category = CatData.find((item) => item.id == match.params.id);
   return (
     <>
       <Nav />
-      <h3 className="products__header">{match.params.id.replace('&', '/')}</h3>
+      <h3 className="products__header">{category.name.replace("&", "/")}</h3>
       <div className="products__container">
         <form className="products__filters ">
           <div className="products__brands products__filterBox">
@@ -32,8 +34,8 @@ const ProductsScreen = ({ match }) => {
           <div className="products__categories products__filterBox">
             <h4 className="products__filterHeader">Kategorie</h4>
             <div className="products__items">
-              {CatData.map((cat) => (
-                <Category key={cat.name} name={cat.name} quantity="112" />
+              {category.subCategories.map((cat) => (
+                <Category key={cat} name={cat} quantity="112" />
               ))}
             </div>
           </div>
