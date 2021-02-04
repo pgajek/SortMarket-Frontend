@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "components/organisms/Nav/Nav";
 import Footer from "components/organisms/Footer/Footer";
 import Cart from "components/organisms/Cart/Cart";
@@ -15,6 +15,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "store/actions/productsActions";
 const ProductsScreen = ({ match }) => {
   const category = CatData.find((item) => item.id == match.params.id);
+  const productsList = useSelector((state) => state.products);
+  const { products, loading, offset, per_page } = productsList;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProducts(offset, per_page));
+  }, []);
+
   return (
     <>
       <Nav />
@@ -124,98 +131,24 @@ const ProductsScreen = ({ match }) => {
           <button className="btn products__formBtn">Resetuj filtry</button>
         </form>
         <section className="products__products">
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
-
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
+          {loading ? (
+            <div>loading</div>
+          ) : (
+            products.map((item, index) => (
+              <ProductCard
+                id={item._id}
+                key={item._id}
+                rating={4}
+                quantity={item.countInStock}
+                unit={item.unit}
+                name={item.name}
+                price={item.price.priceGross}
+                currency={item.price.currency}
+                img="assets/img/test.jpg"
+              />
+            ))
+          )}
           <AddBanner />
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
-          <ProductCard
-            rating={4}
-            quantity={7}
-            unit="szt"
-            name="Fajna cegła"
-            price={36.66}
-            currency="PLN"
-            img="assets/img/test.jpg"
-          />
         </section>
       </div>
       <PaginationBar />
