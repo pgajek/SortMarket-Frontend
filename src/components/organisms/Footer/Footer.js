@@ -1,11 +1,11 @@
-import React from 'react';
-import './Footer.scss';
-import { ReactComponent as FooterImg } from 'assets/icons/footer_img.svg';
-import { ReactComponent as Letter } from 'assets/icons/letter.svg';
-import { ReactComponent as Pin } from 'assets/icons/pin.svg';
-import { ReactComponent as Phone } from 'assets/icons/phone.svg';
-import Categories from 'assets/data/categories-data';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./Footer.scss";
+import { ReactComponent as FooterImg } from "assets/icons/footer_img.svg";
+import { ReactComponent as Letter } from "assets/icons/letter.svg";
+import { ReactComponent as Pin } from "assets/icons/pin.svg";
+import { ReactComponent as Phone } from "assets/icons/phone.svg";
+import Categories from "assets/data/categories-data";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer">
@@ -15,10 +15,8 @@ const Footer = () => {
         <ul className="footer__categoriesList">
           {Categories.map((cat) => (
             <li key={cat.name} className="footer__category">
-              <Link
-                to={`/products/${cat.name}`}
-                className="footer__categoryLink">
-                {cat.name.replace('&', '/')}
+              <Link to={`/products/${cat.id}`} className="footer__categoryLink">
+                {cat.name.replace("&", "/")}
               </Link>
             </li>
           ))}
@@ -89,7 +87,8 @@ const Footer = () => {
             frameBorder="0"
             allowFullScreen=""
             aria-hidden="false"
-            tabIndex="0"></iframe>
+            tabIndex="0"
+          ></iframe>
         </div>
       </div>
       <div className="footer__copyright">Copyright © 2020 Patryk Gajek</div>

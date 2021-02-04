@@ -82,7 +82,7 @@ const Nav = () => {
                 aria-haspopup="true"
               >
                 <Link
-                  to={`/products/${category.name}`}
+                  to={`/products/${category.id}`}
                   className="navigation__link"
                 >
                   {category.name.replace("&", "/")}
