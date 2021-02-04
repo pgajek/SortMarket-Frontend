@@ -15,7 +15,7 @@ const ProductScreen = ({ match }) => {
   const id = match.params.id;
 
   const { loading, activeProduct } = useSelector((state) => state.products);
-  const state = useSelector((state) => state.products);
+
   const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
 
@@ -67,7 +67,7 @@ const ProductScreen = ({ match }) => {
             </div>
           </div>
           <h3 className="productScreen__productName">
-            {activeProduct[0].name}
+            {activeProduct[0]?.name}
           </h3>
           <div className="productScreen__rating">
             {stars.map((star) => (
@@ -83,11 +83,11 @@ const ProductScreen = ({ match }) => {
             183 reviews
           </a>
           <span className="productScreen__productPrice">
-            {activeProduct[0].price.priceGross}{" "}
-            {activeProduct[0].price.currency}
+            {activeProduct[0]?.price.priceGross}{" "}
+            {activeProduct[0]?.price.currency}
           </span>
           <p className="productScreen__productDescription">
-            {activeProduct[0].description}
+            {activeProduct[0]?.description}
           </p>
           <form className="productScreen__form">
             <label htmlFor="quantity" className="productScreen__selectLabel">
@@ -100,8 +100,8 @@ const ProductScreen = ({ match }) => {
               onChange={(e) => setQuantity(parseInt(e.target.value))}
             >
               {createSelectItems(
-                activeProduct[0].countInStock,
-                activeProduct[0].unit
+                activeProduct[0]?.countInStock,
+                activeProduct[0]?.unit
               )}
             </select>
             <label htmlFor="size" className="productScreen__selectLabel">
