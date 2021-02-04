@@ -32,7 +32,7 @@ export const getProduct = (id) => async (dispatch) => {
     const { data } = await Axios.get(
       `http://localhost:9000/api/v1/products/${id}`
     );
-    console.log(data);
+
     dispatch({
       type: PRODUCT_GET,
       payload: data,
