@@ -8,11 +8,19 @@ import {
   SET_PRODUCTS_OPTIONS,
 } from "constants/productsConstants";
 
-export const getProducts = (offset = 0, per_page = 10) => async (dispatch) => {
+export const getProducts = (
+  offset = 0,
+  per_page = 10,
+  category = "0"
+) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCTS_REQUEST });
     const { data } = await Axios.get(
-      `http://localhost:9000/api/v1/products?offset=${offset}&per_page=${per_page}`
+      `http://localhost:9000/api/v1/products?offset=${offset}&per_page=${per_page}&category=${category.replace(
+        " ",
+        "_"
+      )}
+      `
     );
 
     dispatch({

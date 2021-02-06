@@ -19,8 +19,8 @@ const ProductsScreen = ({ match }) => {
   const { products, loading, offset, per_page } = productsList;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProducts(offset, per_page));
-  }, []);
+    dispatch(getProducts(offset, per_page, category.name));
+  }, [category]);
 
   return (
     <>
