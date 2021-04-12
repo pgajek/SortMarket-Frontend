@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# SORT MARKET(WORK IN PROGRESS)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> An ecommerce website, for SortMarket constructional warehause.
+> Integrated with own NodeJS backend aplication and COMARCH ERP OPTIMA.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Screenshots](#screenshots)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [todo](#todo)
+- [Status](#status)
+- [Contact](#contact)
 
-### `npm start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Home](./screenshots/home.jpg)
+![Cart](./screenshots/cart.jpg)
+![cartOpen](./screenshots/cartOpen.jpg)
+![footer](./screenshots/footer.jpg)
+![Products](./screenshots/products.jpg)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+@rehooks/component-size: ^1.0.3,
+@testing-library/jest-dom : ^5.11.6 ,
+@testing-library/react : ^11.2.2 ,
+@testing-library/user-event : ^12.6.0 ,
+axios : ^0.21.1 ,
+js-cookie : ^2.2.1 ,
+node-sass : ^4.14.1 ,
+react : ^17.0.1 ,
+react-dom : ^17.0.1 ,
+react-hook-form : ^6.15.1 ,
+react-redux : ^7.2.2 ,
+react-router : ^5.2.0 ,
+react-router-dom : ^5.2.0 ,
+react-scripts : 4.0.1 ,
+redux : ^4.0.5 ,
+redux-thunk : ^2.3.0 ,
+web-vitals : ^0.2.4
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup
 
-### `npm run build`
+U can use NPM INSTALL and then NPM START in your console.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## TO-DO
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To-do list:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- User interface
+- Stripe Payments
+- Api integration at backend side with COMARCH ERP OPTIMA
 
-### `npm run eject`
+## Status
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Project is: _in progress_
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contact
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Created by Patryk Gajek Github: https://github.com/pgajek
