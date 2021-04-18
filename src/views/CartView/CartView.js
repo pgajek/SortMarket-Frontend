@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import regex from "helpers/regex";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(`${process.env.REACT_APP_STRAPI_KEY}`);
+const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
 
 const ProductScreen = () => {
   const { cartItems } = useSelector((state) => state.cart);
