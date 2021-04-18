@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@rehooks/component-size": "^1.0.3",
+    "@stripe/react-stripe-js": "^1.4.0",
+    "@stripe/stripe-js": "^1.13.2",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
