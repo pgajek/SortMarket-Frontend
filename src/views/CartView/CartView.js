@@ -8,9 +8,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "store/actions/cartActions";
 import { useForm } from "react-hook-form";
 import regex from "helpers/regex";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(`${process.env.REACT_APP_STRAPI_KEY}`);
 
 const ProductScreen = () => {
   const { cartItems } = useSelector((state) => state.cart);
+  console.log(process.env.REACT_APP_STRAPI_KEY);
   const [cartPriceGross, setCartPriceGross] = useState(0);
   const [cartPriceNett, setCartPriceNett] = useState(0);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
@@ -440,7 +444,11 @@ const ProductScreen = () => {
             {cartPriceGross + parseInt(deliveryPrice)}{" "}
             {cartItems.length > 0 && cartItems[0].product.price.currency}
           </div>
-          <button className="btn cartView__summaryBtn" type="submit">
+          <button
+            className="btn cartView__summaryBtn"
+            type="submit"
+            role="link"
+          >
             Przejdz do płatnosci
           </button>
         </div>
