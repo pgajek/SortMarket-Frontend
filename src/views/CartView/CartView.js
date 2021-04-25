@@ -14,7 +14,7 @@ const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
 
 const ProductScreen = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(process.env.REACT_APP_STRAPI_KEY);
+
   const [cartPriceGross, setCartPriceGross] = useState(0);
   const [cartPriceNett, setCartPriceNett] = useState(0);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
@@ -81,6 +81,36 @@ const ProductScreen = () => {
   useEffect(() => {
     countCartPrice();
   }, [cartItems]);
+  console.log(cartItems);
+  console.log(formValues);
+  console.log(deliveryPrice);
+  const handlePaymentButtonClick = async (event) => {
+    const stripe = await stripePromise;
+
+    const response = await fetch(
+      "http://localhost:9000/api/v1/create-checkout-session",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          cartItems: cartItems,
+          deliveryMethod: formValues.deliveryOption,
+          deliveryPrice: deliveryPrice,
+        }),
+      }
+    );
+
+    const session = await response.json();
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+    }
+  };
 
   return (
     <>
@@ -448,6 +478,7 @@ const ProductScreen = () => {
             className="btn cartView__summaryBtn"
             type="submit"
             role="link"
+            onClick={handlePaymentButtonClick}
           >
             Przejdz do płatnosci
           </button>
