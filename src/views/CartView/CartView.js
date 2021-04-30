@@ -84,7 +84,10 @@ const ProductScreen = () => {
   console.log(cartItems);
   console.log(formValues);
   console.log(deliveryPrice);
-  const handlePaymentButtonClick = async (event) => {
+  const handlePaymentButtonClick = (event) => {
+    handleStripe();
+  };
+  const handleStripe = async (event) => {
     const stripe = await stripePromise;
 
     const response = await fetch(
