@@ -37,6 +37,7 @@ const ProductScreen = () => {
     });
     setCartPriceGross(priceGross);
     setCartPriceNett(priceNett);
+    console.log(formValues);
   };
   const createSelectItems = (quantity, unit) => {
     let items = [];
@@ -81,9 +82,7 @@ const ProductScreen = () => {
   useEffect(() => {
     countCartPrice();
   }, [cartItems]);
-  console.log(cartItems);
-  console.log(formValues);
-  console.log(deliveryPrice);
+
   const handlePaymentButtonClick = (event) => {
     handleStripe();
   };
@@ -101,6 +100,7 @@ const ProductScreen = () => {
           cartItems: cartItems,
           deliveryMethod: formValues.deliveryOption,
           deliveryPrice: deliveryPrice,
+          customerEmail: formValues.email,
         }),
       }
     );
