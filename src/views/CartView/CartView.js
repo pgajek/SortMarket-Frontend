@@ -82,8 +82,7 @@ const ProductScreen = () => {
     countCartPrice();
   }, [cartItems]);
   console.log(cartItems);
-  console.log(formValues);
-  console.log(deliveryPrice);
+
   const handlePaymentButtonClick = (event) => {
     handleStripe();
   };
