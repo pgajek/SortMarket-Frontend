@@ -19,7 +19,12 @@ const ProductScreen = () => {
   const [cartPriceNett, setCartPriceNett] = useState(0);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
 
-  const { register, handleSubmit, errors, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm();
   const formValues = watch();
   const dispatch = useDispatch();
   const handleRemoveBtnClick = (id) => {
@@ -171,7 +176,7 @@ const ProductScreen = () => {
                 className={`cartView__input ${
                   errors.name && "cartView__input--error"
                 }`}
-                ref={register({ required: true, minLength: 3 })}
+                {...register("name", { required: true, minLength: 3 })}
               />
               {errors.name?.type === "requiered" && (
                 <span className="cartView__error">To pole jest wymagane</span>
@@ -189,7 +194,7 @@ const ProductScreen = () => {
                 id="surname"
                 name="surname"
                 className="cartView__input"
-                ref={register({ required: true, minLength: 3 })}
+                {...register("surname", { required: true, minLength: 3 })}
               />
               {errors.surname?.type === "requiered" && (
                 <span className="cartView__error">To pole jest wymagane</span>
@@ -208,7 +213,7 @@ const ProductScreen = () => {
                 name="number"
                 className="cartView__input"
                 inputMode="tel"
-                ref={register({
+                {...register("number", {
                   required: true,
                   minLength: 9,
                   valueAsNumber: true,
@@ -222,7 +227,7 @@ const ProductScreen = () => {
               )}
             </div>
             <div className="cartView__field">
-              <label htmlFor="number" className="cartView__label">
+              <label htmlFor="email" className="cartView__label">
                 *E-mail:
               </label>
               <input
@@ -231,7 +236,7 @@ const ProductScreen = () => {
                 name="email"
                 className="cartView__input"
                 inputMode="email"
-                ref={register({ required: true, pattern: regex.email })}
+                {...register("email", { required: true, pattern: regex.email })}
               />
               {errors.email?.type === "requiered" && (
                 <span className="cartView__error">To pole jest wymagane</span>
@@ -246,7 +251,7 @@ const ProductScreen = () => {
                 id="city"
                 name="city"
                 className="cartView__input"
-                ref={register({ required: true, minLength: 3 })}
+                {...register("city", { required: true, minLength: 3 })}
               />
               {errors.city?.type === "requiered" && (
                 <span className="cartView__error">To pole jest wymagane</span>
@@ -261,7 +266,7 @@ const ProductScreen = () => {
                 id="adress"
                 name="adress"
                 className="cartView__input"
-                ref={register({ required: true, minLength: 3 })}
+                {...register("adress", { required: true, minLength: 3 })}
               />
               {errors.email?.type === "requiered" && (
                 <span className="cartView__error">To pole jest wymagane</span>
@@ -276,7 +281,7 @@ const ProductScreen = () => {
                 id="postalCode"
                 name="postalCode"
                 className="cartView__input"
-                ref={register()}
+                {...register("postalCode")}
               />
               {errors.postalCode?.type === "requiered" && (
                 <span className="cartView__error">To pole jest wymagane</span>
@@ -291,7 +296,7 @@ const ProductScreen = () => {
                 id="nip"
                 name="nip"
                 className="cartView__input"
-                ref={register()}
+                {...register("nip")}
               />
               {errors.nip?.type === "requiered" && (
                 <span className="cartView__error">To pole jest wymagane</span>
@@ -306,7 +311,7 @@ const ProductScreen = () => {
                 id="companyName"
                 name="companyName"
                 className="cartView__input"
-                ref={register()}
+                {...register("companyName")}
               />
               {errors.companyName?.type === "requiered" && (
                 <span className="cartView__error">To pole jest wymagane</span>
@@ -324,7 +329,7 @@ const ProductScreen = () => {
                 data-price={19.99}
                 onChange={(e) => setDeliveryPrice(e.target.dataset.price)}
                 className="cartView__radio"
-                ref={register({ required: true })}
+                {...register("deliveryOption", { required: true })}
               />
               <label htmlFor="kurier" className="cartView__label">
                 Kurier{" "}
@@ -340,7 +345,7 @@ const ProductScreen = () => {
                 value="Dostawa do klienta"
                 data-price={29.99}
                 onChange={(e) => setDeliveryPrice(e.target.dataset.price)}
-                ref={register({ required: true })}
+                {...register("deliveryOption", { required: true })}
               />
               <label htmlFor="dostawa" className="cartView__label">
                 Dostawa do klienta{" "}
@@ -356,7 +361,7 @@ const ProductScreen = () => {
                 data-price={0}
                 value="Odbiór na miejscu"
                 onChange={(e) => setDeliveryPrice(e.target.dataset.price)}
-                ref={register({ required: true })}
+                {...register("deliveryOption", { required: true })}
               />
               <label htmlFor="odbior" className="cartView__label">
                 Odbiór na miejscu{" "}
@@ -376,7 +381,7 @@ const ProductScreen = () => {
                 type="radio"
                 className="cartView__radio"
                 value="Na miejscu"
-                ref={register({ required: true })}
+                {...register("paymentOption", { required: true })}
               />
               <label htmlFor="namiejscu" className="cartView__label">
                 Na miejscu
@@ -389,7 +394,7 @@ const ProductScreen = () => {
                 type="radio"
                 className="cartView__radio"
                 value="Przelew"
-                ref={register({ required: true })}
+                {...register("paymentOption", { required: true })}
               />
               <label htmlFor="przelew" className="cartView__label">
                 Przelew
@@ -402,7 +407,7 @@ const ProductScreen = () => {
                 type="radio"
                 className="cartView__radio"
                 value="Karta"
-                ref={register({ required: true })}
+                {...register("paymentOption", { required: true })}
               />
               <label htmlFor="kartą" className="cartView__label">
                 Płatność kartą
@@ -420,7 +425,7 @@ const ProductScreen = () => {
               cols="30"
               rows="10"
               className="cartView__textarea"
-              ref={register()}
+              {...register("message")}
             ></textarea>
           </div>
           <div className="cartView__box cartView__copy">
