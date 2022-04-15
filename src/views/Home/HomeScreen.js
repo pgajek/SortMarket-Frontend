@@ -14,6 +14,7 @@ const HomeScreen = () => {
   const productsList = useSelector((state) => state.products);
   const { products, loading, offset, per_page } = productsList;
   const dispatch = useDispatch();
+  console.log(productsList);
   useEffect(() => {
     dispatch(getProducts(offset, per_page));
   }, []);
@@ -36,7 +37,7 @@ const HomeScreen = () => {
               name={item.name}
               price={item.price.priceGross}
               currency={item.price.currency}
-              img="assets/img/test.jpg"
+              img={`http://localhost:9000/${item.images[0]}`}
             />
           ))
         )}

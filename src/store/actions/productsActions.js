@@ -8,39 +8,35 @@ import {
   SET_PRODUCTS_OPTIONS,
 } from "constants/productsConstants";
 
-export const getProducts = (
-  offset = 0,
-  per_page = 10,
-  category = "0"
-) => async (dispatch) => {
-  try {
-    dispatch({ type: PRODUCTS_REQUEST });
-    const { data } = await Axios.get(
-      `http://localhost:9000/api/v1/products?offset=${offset}&per_page=${per_page}&category=${category.replace(
-        " ",
-        "_"
-      )}
+export const getProducts =
+  (offset = 0, per_page = 10, category = "0") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCTS_REQUEST });
+      const { data } = await Axios.get(
+        `http://localhost:9000/api/v1/products?offset=${offset}&per_page=${per_page}&category=${category.replace(
+          " ",
+          "_"
+        )}
       `
-    );
-
-    dispatch({
-      type: PRODUCTS_GET,
-      payload: {
-        products: data.products,
-        productsCount: data.productsCount,
-      },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+      );
+      dispatch({
+        type: PRODUCTS_GET,
+        payload: {
+          products: data.products,
+          productsCount: data.total,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 export const getProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_REQUEST });
     const { data } = await Axios.get(
       `http://localhost:9000/api/v1/products/${id}`
     );
-
     dispatch({
       type: PRODUCT_GET,
       payload: data,
