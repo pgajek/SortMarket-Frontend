@@ -69,14 +69,16 @@
 .card__quantity {
   appearance: none;
   border: 1px solid #cccccc;
-  color: #dfe0df;
+  color: #747674;
   font-family: "Inter", sans-serif;
   font-size: 1.4rem;
   height: 40px;
   padding: 5px 10px;
   border-radius: 2px;
   margin-right: 2px;
+  width: 45%;
 }
+
 .card__star {
   &--active {
     path {
