@@ -30,9 +30,12 @@
 .productScreen__smallPictures {
   height: 20%;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .productScreen__image {
   height: 100%;
+  width: 19%;
   margin-right: 5px;
   cursor: pointer;
 }
@@ -98,7 +101,7 @@
 .productScreen__quantity {
   appearance: none;
   border: 1px solid #cccccc;
-  color: #dfe0df;
+  color: #747674;
   font-family: "Inter", sans-serif;
   font-size: 1.4rem;
   height: 40px;

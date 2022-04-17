@@ -15,7 +15,8 @@ const ProductScreen = ({ match }) => {
   const id = match.params.id;
 
   const { loading, activeProduct } = useSelector((state) => state.products);
-
+  const [photos, setPhotos] = useState([]);
+  const [activeImage, setActiveImage] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
 
@@ -33,6 +34,7 @@ const ProductScreen = ({ match }) => {
   };
   useEffect(() => {
     dispatch(getProduct(id));
+    setPhotos(activeProduct[0]?.images);
   }, []);
 
   return (
@@ -44,26 +46,40 @@ const ProductScreen = ({ match }) => {
         <div className="productScreen__productContainer">
           <div className="productScreen__productImages">
             <img
-              src="/assets/img/test.jpg"
+              src={`http://localhost:9000/${photos && photos[activeImage]}`}
               alt=""
               className="productScreen__mainImage"
             />
             <div className="productScreen__smallPictures">
-              <img
-                src="/assets/img/test.jpg"
+              {photos &&
+                photos.map((photo) => (
+                  <img
+                    src={`http://localhost:9000/${photo}`}
+                    alt=""
+                    className="productScreen__image"
+                    data-number={photos.indexOf(photo)}
+                    onClick={(e) => setActiveImage(e.target.dataset.number)}
+                  />
+                ))}
+              {/* <img
+                src={`http://localhost:9000/${activeProduct[0]?.images[activeImage]}`}
                 alt=""
                 className="productScreen__image"
               />
               <img
-                src="/assets/img/test.jpg"
+                src={`http://localhost:9000/${
+                  activeProduct[0]?.images[activeImage + 1]
+                }`}
                 alt=""
                 className="productScreen__image"
               />
               <img
-                src="/assets/img/test.jpg"
+                src={`http://localhost:9000/${
+                  activeProduct[0]?.images[activeImage + 2]
+                }`}
                 alt=""
                 className="productScreen__image"
-              />
+              /> */}
             </div>
           </div>
           <h3 className="productScreen__productName">
@@ -83,8 +99,8 @@ const ProductScreen = ({ match }) => {
             183 reviews
           </a>
           <span className="productScreen__productPrice">
-            {activeProduct[0]?.price.priceGross}{" "}
-            {activeProduct[0]?.price.currency}
+            {activeProduct[0]?.price?.priceGross}{" "}
+            {activeProduct[0]?.price?.currency}
           </span>
           <p className="productScreen__productDescription">
             {activeProduct[0]?.description}

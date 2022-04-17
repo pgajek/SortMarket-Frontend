@@ -32,11 +32,11 @@ const HomeScreen = () => {
               id={item._id}
               key={item._id}
               rating={4}
-              quantity={item.countInStock}
-              unit={item.unit}
-              name={item.name}
-              price={item.price.priceGross}
-              currency={item.price.currency}
+              quantity={item?.countInStock}
+              unit={item?.unit}
+              name={item?.name}
+              price={item?.price?.priceGross}
+              currency={item?.price?.currency}
               img={`http://localhost:9000/${item.images[0]}`}
             />
           ))
